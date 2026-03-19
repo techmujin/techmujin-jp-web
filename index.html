@@ -1,61 +1,326 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techmujin.jp</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
+  <!-- ページタイトル -->
+  <title>テック無尽（TECH MUJIN）｜山梨ITコミュニティ合同イベント</title>
 
-        .fullscreen-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <!-- メタディスクリプション -->
+  <meta name="description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。現在はコミュニティ関係者および運営スタッフ向けに準備を進めています。">
 
-        .fullscreen-image {
-            max-width: none;
-            max-height: none;
-            object-fit: cover;
-            width: 100vw;
-            height: 100vh;
-        }
+  <!-- OGP 基本設定 -->
+  <!-- TODO: og:image は公開フェーズ前に差し替えること -->
+  <meta property="og:title" content="テック無尽（TECH MUJIN）｜山梨ITコミュニティ合同イベント">
+  <meta property="og:description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。現在はコミュニティ関係者および運営スタッフ向けに準備を進めています。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="テック無尽（TECH MUJIN）">
+  <!-- <meta property="og:image" content="https://techmujin.jp/ogp.png"> -->
+  <!-- <meta property="og:url" content="https://techmujin.jp/"> -->
 
-        @media (orientation: portrait) {
-            .fullscreen-image {
-                width: 100vw;
-                height: auto;
-                min-height: 100vh;
-            }
-        }
+  <!-- canonical（公開フェーズで設定すること） -->
+  <!-- <link rel="canonical" href="https://techmujin.jp/"> -->
 
-        @media (orientation: landscape) {
-            .fullscreen-image {
-                height: 100vh;
-                width: auto;
-                min-width: 100vw;
-            }
-        }
-    </style>
+  <!-- favicon（実ファイルは別途用意すること） -->
+  <!-- <link rel="icon" href="/favicon.ico"> -->
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- TODO: Google Analytics / Plausible などのトラッキングコードはここに挿入する -->
+  <!-- 例: <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
 </head>
 <body>
-    <div class="fullscreen-container">
-        <img src="kofu.jpg" alt="Kofu image" class="fullscreen-image">
+
+  <!-- =============================================
+       ヘッダー
+       準備フェーズはシンプルなサイト名＋ナビのみ
+       公開フェーズでロゴ画像・ビジュアル強化を検討
+  ============================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="site-branding">
+        <a href="#top" class="site-logo-link" aria-label="テック無尽 トップへ">
+          <div class="site-name">
+            <span class="site-name-ja" aria-hidden="false">テック無尽</span>
+            <span class="site-name-en" aria-hidden="true">TECH MUJIN</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ハンバーガーメニューボタン（スマホ用） -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="globalNav" aria-label="メニューを開く">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <!-- グローバルナビゲーション -->
+      <nav class="global-nav" id="globalNav" aria-label="ページ内ナビゲーション">
+        <ul class="nav-list" role="list">
+          <li><a href="#about" class="nav-link">テック無尽とは</a></li>
+          <li><a href="#community" class="nav-link">参加コミュニティ募集</a></li>
+          <li><a href="#staff" class="nav-link">スタッフ募集</a></li>
+          <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =============================================
+         導入セクション
+         2026年7月以降の公開フェーズでは
+         キービジュアル・キャッチコピーを追加する想定
+    ============================================= -->
+    <section class="section-intro" aria-labelledby="intro-heading">
+      <div class="container intro-inner">
+        <h1 class="intro-title" id="intro-heading">
+          <img src="images/logo.svg" alt="テック無尽" class="intro-logo">
+        </h1>
+        <p class="intro-subtitle">山梨ITコミュニティ合同イベント</p>
+        <dl class="event-meta">
+          <div class="event-meta-item">
+            <dt class="visually-hidden">開催予定日</dt>
+            <dd class="event-meta-date">2026年11月22日（日）開催予定</dd>
+          </div>
+          <div class="event-meta-item">
+            <dt class="visually-hidden">開催予定場所</dt>
+            <dd class="event-meta-venue">山梨県立図書館 イベントスペース</dd>
+          </div>
+        </dl>
+        <p class="intro-note" role="note">
+          現在、コミュニティ関係者・運営スタッフ向けに準備を進めています。
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================================
+         テック無尽とは
+         公開フェーズで登壇者情報・タイムテーブルを追加予定
+    ============================================= -->
+    <section class="section-about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 class="section-heading" id="about-heading">テック無尽とは</h2>
+        <div class="section-body prose">
+          <p>テック無尽は、山梨県内で活動するITコミュニティが一堂に会する合同イベントです。</p>
+          <p>
+            それぞれのコミュニティが個別に活動してきた中で、「横につながる場」をつくりたいという想いから、このプロジェクトが立ち上がりました。
+          </p>
+          <p>
+            コミュニティ紹介、ライトニングトーク、ブース展示、交流などを通して、山梨のITコミュニティの現在地を見える形にすることを目指しています。
+          </p>
+          <p class="note-text">現在は、イベント開催に向けた準備フェーズです。</p>
+        </div>
+
+        <!-- TODO: 公開フェーズで以下のセクションを追加する
+             - タイムテーブルセクション
+             - 参加方法セクション
+             - 参加コミュニティ詳細ページへのリンク
+        -->
+      </div>
+    </section>
+
+    <!-- =============================================
+         参加コミュニティ募集
+         本番フォームへの接続は公開フェーズで対応予定
+    ============================================= -->
+    <section class="section-recruit section-community" id="community" aria-labelledby="community-heading">
+      <div class="container">
+        <h2 class="section-heading" id="community-heading">参加コミュニティを募集しています</h2>
+        <div class="section-body prose">
+          <p>テック無尽では、参加いただけるITコミュニティを募集しています。</p>
+          <ul class="criteria-list" role="list">
+            <li>山梨県内で活動している</li>
+            <li>ITに関するテーマを扱っている</li>
+            <li>規模は問いません</li>
+          </ul>
+          <p>既存のコミュニティはもちろん、これから立ち上げを検討している段階でも歓迎します。</p>
+          <p>まずはお気軽にご連絡ください。</p>
+        </div>
+        <!-- TODO: #community-form を実際のフォームサービス URL に差し替える -->
+        <a href="#contact" class="btn btn-primary">参加希望フォームへ</a>
+      </div>
+    </section>
+
+    <!-- =============================================
+         スタッフ募集
+         本番フォームへの接続は公開フェーズで対応予定
+    ============================================= -->
+    <section class="section-recruit section-staff" id="staff" aria-labelledby="staff-heading">
+      <div class="container">
+        <h2 class="section-heading" id="staff-heading">スタッフを募集しています</h2>
+        <div class="section-body prose">
+          <p>テック無尽は、有志によるプロジェクトとして運営しています。</p>
+          <p>イベントの立ち上げから関わっていただける方を募集しています。</p>
+          <ul class="criteria-list" role="list">
+            <li>広報</li>
+            <li>デザイン</li>
+            <li>Web制作</li>
+            <li>当日運営</li>
+            <li>スポンサー対応</li>
+          </ul>
+          <p>すべてを担う必要はありません。ご自身の関心や関わりやすい範囲での参加を歓迎します。</p>
+        </div>
+        <!-- TODO: #staff-form を実際のフォームサービス URL に差し替える -->
+        <a href="#contact" class="btn btn-primary">スタッフ参加フォームへ</a>
+      </div>
+    </section>
+
+    <!-- =============================================
+         お知らせ
+         TODO: 公開フェーズでお知らせをCMSまたはJSON管理へ移行する
+               例: fetch('/data/news.json') で動的描画
+    ============================================= -->
+    <section class="section-news" id="news" aria-labelledby="news-heading">
+      <div class="container">
+        <h2 class="section-heading" id="news-heading">お知らせ</h2>
+        <ul class="news-list" role="list">
+          <li class="news-item">
+            <time class="news-date" datetime="2026-01-01">2026.XX.XX</time>
+            <span class="news-text">テック無尽 公式サイト公開</span>
+          </li>
+          <li class="news-item">
+            <time class="news-date" datetime="2026-01-01">2026.XX.XX</time>
+            <span class="news-text">参加コミュニティ募集開始</span>
+          </li>
+          <li class="news-item">
+            <time class="news-date" datetime="2026-01-01">2026.XX.XX</time>
+            <span class="news-text">スタッフ募集開始</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =============================================
+         お問い合わせフォーム
+         現在はデモ（送信機能なし）
+         TODO: 公開フェーズで実際のフォームサービスに接続する
+               例: Google Forms, Formspree, formrun など
+               送信処理は script.js の submitHandler を書き換える
+    ============================================= -->
+    <section class="section-contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 class="section-heading" id="contact-heading">お問い合わせ</h2>
+        <p class="section-lead">本プロジェクトに関するお問い合わせは、以下よりご連絡ください。</p>
+
+        <form class="contact-form" id="contactForm" novalidate aria-label="お問い合わせフォーム">
+
+          <!-- お名前 -->
+          <div class="form-group">
+            <label class="form-label" for="inputName">
+              お名前 <span class="form-required" aria-label="必須">必須</span>
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              id="inputName"
+              name="name"
+              autocomplete="name"
+              placeholder="山田 太郎"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="form-group">
+            <label class="form-label" for="inputEmail">
+              メールアドレス <span class="form-required" aria-label="必須">必須</span>
+            </label>
+            <input
+              class="form-input"
+              type="email"
+              id="inputEmail"
+              name="email"
+              autocomplete="email"
+              placeholder="example@email.com"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <!-- 種別 -->
+          <div class="form-group">
+            <label class="form-label" for="inputCategory">
+              種別 <span class="form-required" aria-label="必須">必須</span>
+            </label>
+            <div class="select-wrapper">
+              <select
+                class="form-select"
+                id="inputCategory"
+                name="category"
+                required
+                aria-required="true"
+              >
+                <option value="" disabled selected>選択してください</option>
+                <option value="community">参加コミュニティについて</option>
+                <option value="staff">スタッフ参加について</option>
+                <option value="other">その他のお問い合わせ</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 内容 -->
+          <div class="form-group">
+            <label class="form-label" for="inputMessage">
+              内容 <span class="form-required" aria-label="必須">必須</span>
+            </label>
+            <textarea
+              class="form-textarea"
+              id="inputMessage"
+              name="message"
+              rows="6"
+              placeholder="お問い合わせ内容をご記入ください。"
+              required
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <!-- 送信ボタン -->
+          <div class="form-actions">
+            <button class="btn btn-submit" type="submit">送信する</button>
+          </div>
+
+          <!-- 送信後メッセージ（script.js で表示制御） -->
+          <div
+            class="form-result"
+            id="formResult"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            hidden
+          ></div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       フッター
+       公開フェーズでSNSリンク・プライバシーポリシーを追加予定
+  ============================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-social">
+        <a href="https://www.facebook.com/techmujin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook ページを開く">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Facebook</span>
+        </a>
+      </div>
+      <p class="footer-copy">
+        <small>&copy; TECH MUJIN</small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
