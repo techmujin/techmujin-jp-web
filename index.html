@@ -63,6 +63,7 @@
           <li><a href="#about" class="nav-link">テック無尽とは</a></li>
           <li><a href="#community" class="nav-link">参加コミュニティ募集</a></li>
           <li><a href="#staff" class="nav-link">スタッフ募集</a></li>
+          <li><a href="#blog" class="nav-link">運営ブログ</a></li>
           <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
         </ul>
       </nav>
@@ -192,6 +193,39 @@
             <span class="news-text">スタッフ募集開始</span>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- =============================================
+         運営ブログ
+         noteマガジンのRSSフィードから記事を取得して表示
+    ============================================= -->
+    <section class="section-blog" id="blog" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-header-with-link">
+          <h2 class="section-heading" id="blog-heading">運営ブログ</h2>
+          <a href="https://note.com/techmujin/m/m61bd7c72cd8c" class="blog-link" target="_blank" rel="noopener noreferrer">
+            noteマガジンを見る
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="blog-content">
+          <div id="blogLoading" class="blog-loading">
+            <div class="loading-spinner"></div>
+            記事を読み込み中...
+          </div>
+          <div id="blogError" class="blog-error" hidden>
+            記事の取得に失敗しました。
+            <a href="https://note.com/techmujin/m/m61bd7c72cd8c" target="_blank" rel="noopener noreferrer">
+              noteマガジンを直接ご覧ください
+            </a>
+          </div>
+          <ul id="blogList" class="blog-list" role="list" hidden>
+            <!-- RSSから取得した記事がここに動的に挿入されます -->
+          </ul>
+        </div>
       </div>
     </section>
 
