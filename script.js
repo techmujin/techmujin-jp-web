@@ -21,7 +21,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavToggle();
-  initContactForm();
   initBlog();
 });
 
@@ -111,79 +110,6 @@ function initNavToggle() {
     toggleBtn.setAttribute('aria-expanded', String(isOpen));
     toggleBtn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
     nav.classList.toggle('is-open', isOpen);
-  }
-}
-
-
-/* =============================================
-   3. お問い合わせフォームのダミー送信処理
-   現在はデモのため実際の送信は行わない。
-   公開フェーズで以下のように切り替える:
-   - fetch() を使って API エンドポイントに POST する
-   - または form の action / method を変更して外部サービスへ送信する
-============================================= */
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  const resultEl = document.getElementById('formResult');
-
-  if (!form || !resultEl) return;
-
-  form.addEventListener('submit', (e) => {
-    // デモ: 送信をキャンセル
-    e.preventDefault();
-
-    // バリデーション（ブラウザネイティブ）
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    // フォームデータの取得（実装時はここで fetch に渡す）
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    // TODO: 本番フォームへの接続処理をここに記述する
-    // 例:
-    // fetch('https://your-form-service.example.com/submit', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data),
-    // })
-    // .then(res => res.json())
-    // .then(() => showResult('success', 'お問い合わせを受け付けました。'))
-    // .catch(() => showResult('error', '送信に失敗しました。時間をおいて再度お試しください。'));
-
-    // デモ用: 画面内メッセージを表示
-    console.log('[TECH MUJIN] フォームデータ (デモ):', data);
-    showResult(
-      'info',
-      'このデモでは送信機能は未実装です。\n公開フェーズで実際のフォームサービスに接続予定です。'
-    );
-
-    // 送信ボタンを一時的に無効化（二重送信防止の例）
-    const submitBtn = form.querySelector('[type="submit"]');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      setTimeout(() => { submitBtn.disabled = false; }, 3000);
-    }
-  });
-
-  /**
-   * フォーム下部に結果メッセージを表示する
-   * @param {'info'|'success'|'error'} type
-   * @param {string} message
-   */
-  function showResult(type, message) {
-    resultEl.className = `form-result is-${type}`;
-    resultEl.textContent = message;
-    resultEl.hidden = false;
-
-    // フォーカスを結果メッセージに移動（アクセシビリティ）
-    resultEl.setAttribute('tabindex', '-1');
-    resultEl.focus({ preventScroll: false });
-
-    // 一定時間後に非表示（オプション）
-    // setTimeout(() => { resultEl.hidden = true; }, 8000);
   }
 }
 

@@ -64,7 +64,6 @@
           <li><a href="#community" class="nav-link">参加コミュニティ募集</a></li>
           <li><a href="#staff" class="nav-link">スタッフ募集</a></li>
           <li><a href="#blog" class="nav-link">運営ブログ</a></li>
-          <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
         </ul>
       </nav>
     </div>
@@ -142,8 +141,6 @@
           <p>既存のコミュニティはもちろん、これから立ち上げを検討している段階でも歓迎します。</p>
           <p>まずはお気軽にご連絡ください。</p>
         </div>
-        <!-- TODO: #community-form を実際のフォームサービス URL に差し替える -->
-        <a href="#contact" class="btn btn-primary">参加希望フォームへ</a>
       </div>
     </section>
 
@@ -166,8 +163,6 @@
           </ul>
           <p>すべてを担う必要はありません。ご自身の関心や関わりやすい範囲での参加を歓迎します。</p>
         </div>
-        <!-- TODO: #staff-form を実際のフォームサービス URL に差し替える -->
-        <a href="#contact" class="btn btn-primary">スタッフ参加フォームへ</a>
       </div>
     </section>
 
@@ -229,109 +224,6 @@
       </div>
     </section>
 
-    <!-- =============================================
-         お問い合わせフォーム
-         現在はデモ（送信機能なし）
-         TODO: 公開フェーズで実際のフォームサービスに接続する
-               例: Google Forms, Formspree, formrun など
-               送信処理は script.js の submitHandler を書き換える
-    ============================================= -->
-    <section class="section-contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <h2 class="section-heading" id="contact-heading">お問い合わせ</h2>
-        <p class="section-lead">本プロジェクトに関するお問い合わせは、以下よりご連絡ください。</p>
-
-        <form class="contact-form" id="contactForm" novalidate aria-label="お問い合わせフォーム">
-
-          <!-- お名前 -->
-          <div class="form-group">
-            <label class="form-label" for="inputName">
-              お名前 <span class="form-required" aria-label="必須">必須</span>
-            </label>
-            <input
-              class="form-input"
-              type="text"
-              id="inputName"
-              name="name"
-              autocomplete="name"
-              placeholder="山田 太郎"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <!-- メールアドレス -->
-          <div class="form-group">
-            <label class="form-label" for="inputEmail">
-              メールアドレス <span class="form-required" aria-label="必須">必須</span>
-            </label>
-            <input
-              class="form-input"
-              type="email"
-              id="inputEmail"
-              name="email"
-              autocomplete="email"
-              placeholder="example@email.com"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <!-- 種別 -->
-          <div class="form-group">
-            <label class="form-label" for="inputCategory">
-              種別 <span class="form-required" aria-label="必須">必須</span>
-            </label>
-            <div class="select-wrapper">
-              <select
-                class="form-select"
-                id="inputCategory"
-                name="category"
-                required
-                aria-required="true"
-              >
-                <option value="" disabled selected>選択してください</option>
-                <option value="community">参加コミュニティについて</option>
-                <option value="staff">スタッフ参加について</option>
-                <option value="other">その他のお問い合わせ</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- 内容 -->
-          <div class="form-group">
-            <label class="form-label" for="inputMessage">
-              内容 <span class="form-required" aria-label="必須">必須</span>
-            </label>
-            <textarea
-              class="form-textarea"
-              id="inputMessage"
-              name="message"
-              rows="6"
-              placeholder="お問い合わせ内容をご記入ください。"
-              required
-              aria-required="true"
-            ></textarea>
-          </div>
-
-          <!-- 送信ボタン -->
-          <div class="form-actions">
-            <button class="btn btn-submit" type="submit">送信する</button>
-          </div>
-
-          <!-- 送信後メッセージ（script.js で表示制御） -->
-          <div
-            class="form-result"
-            id="formResult"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-            hidden
-          ></div>
-
-        </form>
-      </div>
-    </section>
 
   </main>
 

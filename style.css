@@ -548,21 +548,6 @@ section:nth-child(even) {
   border-color: #550040;
 }
 
-.btn-submit {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
-  min-width: 160px;
-}
-.btn-submit:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  color: #ffffff;
-}
-.btn-submit:active {
-  background-color: #550040;
-}
-
 
 /* =============================================
    9. お知らせセクション
@@ -752,140 +737,6 @@ section:nth-child(even) {
 
 
 /* =============================================
-   10. お問い合わせセクション
-============================================= */
-.section-contact {
-  background-color: var(--color-bg-white);
-}
-
-.contact-form {
-  margin-top: var(--space-6);
-  background-color: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-7);
-  box-shadow: var(--shadow-sm);
-}
-
-.form-group {
-  margin-bottom: var(--space-5);
-}
-
-.form-label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-
-.form-required {
-  display: inline-block;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: #ffffff;
-  background-color: var(--color-primary);
-  padding: 1px 6px;
-  border-radius: 3px;
-  vertical-align: middle;
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  display: block;
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-body);
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-  background-color: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition:
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
-  appearance: none;
-  -webkit-appearance: none;
-  line-height: var(--line-height-base);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--color-text-light);
-}
-
-.form-input:hover,
-.form-select:hover,
-.form-textarea:hover {
-  border-color: var(--color-text-muted);
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-focus);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-/* セレクトボックス */
-.select-wrapper {
-  position: relative;
-}
-.select-wrapper::after {
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--color-text-muted);
-  border-bottom: 2px solid var(--color-text-muted);
-  pointer-events: none;
-}
-.form-select {
-  padding-right: var(--space-8);
-  cursor: pointer;
-}
-
-/* フォームアクション */
-.form-actions {
-  margin-top: var(--space-6);
-  display: flex;
-  justify-content: flex-end;
-}
-.btn-submit {
-  margin-top: 0;
-}
-
-/* フォーム送信結果メッセージ */
-.form-result {
-  margin-top: var(--space-5);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-base);
-}
-.form-result[hidden] {
-  display: none;
-}
-.form-result.is-info {
-  background-color: #e8f4f8;
-  border: 1px solid var(--color-accent);
-  color: #006070;
-}
-
-
-/* =============================================
    11. フッター
 ============================================= */
 .site-footer {
@@ -1015,17 +866,6 @@ section:nth-child(even) {
   .intro-logo {
     width: 220px;
     max-width: 85vw;
-  }
-
-  /* フォーム */
-  .contact-form {
-    padding: var(--space-5);
-  }
-  .form-actions {
-    justify-content: stretch;
-  }
-  .btn-submit {
-    width: 100%;
   }
 
   /* お知らせ */
