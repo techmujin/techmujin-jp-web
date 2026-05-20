@@ -12,11 +12,9 @@
    6. 導入セクション
    7. テック無尽とはセクション
    8. 募集セクション（コミュニティ・スタッフ）
-   9. お知らせセクション
-   10. お問い合わせセクション
-   11. フッター
-   12. ユーティリティ
-   13. レスポンシブ
+  9. フッター
+  10. ユーティリティ
+  11. レスポンシブ
 ============================================= */
 
 
@@ -550,194 +548,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-   9. お知らせセクション
-============================================= */
-.section-news {
-  background-color: var(--color-bg-section);
-}
-
-.news-list {
-  border-top: 1px solid var(--color-border);
-}
-.news-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-5);
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--color-border-light);
-}
-.news-date {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  font-weight: 500;
-  white-space: nowrap;
-  min-width: 90px;
-  flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
-}
-.news-text {
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-}
-
-/* 運営ブログセクション */
-.section-blog {
-  background-color: var(--color-bg-white);
-}
-
-.section-header-with-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-bottom: var(--space-5);
-}
-
-.blog-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.blog-link:hover {
-  color: var(--color-primary-hover);
-  text-decoration: underline;
-}
-
-.blog-link svg {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.blog-loading,
-.blog-error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  padding: var(--space-6);
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-}
-
-.loading-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--color-border);
-  border-top: 2px solid var(--color-primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.blog-error a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.blog-error a:hover {
-  text-decoration: underline;
-}
-
-.blog-list {
-  border-top: 1px solid var(--color-border);
-}
-
-.blog-notice {
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--color-border-light);
-  background-color: var(--color-bg-section);
-  margin: 0 calc(-1 * var(--space-4));
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-}
-
-.blog-notice-text {
-  margin: 0;
-  text-align: center;
-}
-
-.blog-notice-text a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.blog-notice-text a:hover {
-  text-decoration: underline;
-}
-
-.blog-item {
-  padding: var(--space-5) 0;
-  border-bottom: 1px solid var(--color-border-light);
-}
-
-.blog-item-link {
-  display: inline;
-  text-decoration: none;
-  color: var(--color-text);
-  transition: color 0.2s ease;
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  line-height: var(--line-height-tight);
-}
-
-.blog-item-link:hover {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-.blog-item-title {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--color-text);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--space-2);
-}
-
-.blog-item-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-}
-
-.blog-item-date {
-  font-variant-numeric: tabular-nums;
-}
-
-.blog-item-excerpt {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-base);
-}
-
-.blog-item-excerpt a {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.blog-item-excerpt a:hover {
-  color: var(--color-primary-hover);
-  text-decoration: underline;
-}
-
-
-/* =============================================
-   11. フッター
+  9. フッター
 ============================================= */
 .site-footer {
   background-color: var(--color-text);
@@ -785,7 +596,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-   12. ユーティリティ
+  10. ユーティリティ
 ============================================= */
 /* スクリーンリーダー専用テキスト */
 .visually-hidden {
@@ -802,7 +613,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-   13. レスポンシブ
+  11. レスポンシブ
 ============================================= */
 
 /* タブレット以下（768px 未満） */
@@ -866,12 +677,6 @@ section:nth-child(even) {
   .intro-logo {
     width: 220px;
     max-width: 85vw;
-  }
-
-  /* お知らせ */
-  .news-item {
-    flex-direction: column;
-    gap: var(--space-1);
   }
 
   /* ボタン */
