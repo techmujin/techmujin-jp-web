@@ -5,9 +5,6 @@
  * 目次:
  * 1. ページ内スムーズスクロール
  * 2. ハンバーガーメニュー開閉
- *
- * TODO: 公開フェーズでの追加ポイント:
- * - Google Analytics (gtag.js) または Plausible の初期化コードを追加
  */
 
 'use strict';
@@ -108,29 +105,5 @@ function initNavToggle() {
     nav.classList.toggle('is-open', isOpen);
   }
 }
-
-
-/* =============================================
-   TODO: 将来追加予定の処理メモ
-
-   ■ Google Analytics 4 の初期化
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){ dataLayer.push(arguments); }
-   gtag('js', new Date());
-   gtag('config', 'GA_MEASUREMENT_ID');
-
-   ■ Plausible Analytics
-   <script defer data-domain="techmujin.jp" src="https://plausible.io/js/script.js"></script>
-
-   ■ お知らせの動的読み込み（CMS/JSON 移行後）
-   fetch('/data/news.json')
-     .then(r => r.json())
-     .then(items => renderNews(items));
-
-   ■ 公開フェーズ向け追加セクション（HTML側にコメントあり）
-   - タイムテーブルセクション
-   - 参加方法セクション
-   - 参加コミュニティ一覧セクション
-============================================= */
 
 
