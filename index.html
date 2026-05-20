@@ -1,61 +1,162 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techmujin.jp</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
+  <!-- ページタイトル -->
+  <title>テック無尽 | 山梨ITコミュニティ合同イベント</title>
 
-        .fullscreen-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <!-- メタディスクリプション -->
+  <meta name="description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。2026年11月22日（日）、山梨県立図書館で開催予定。">
 
-        .fullscreen-image {
-            max-width: none;
-            max-height: none;
-            object-fit: cover;
-            width: 100vw;
-            height: 100vh;
-        }
+  <!-- OGP 基本設定 -->
+  <meta property="og:title" content="テック無尽 | 山梨ITコミュニティ合同イベント">
+  <meta property="og:description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。2026年11月22日（日）、山梨県立図書館で開催予定。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="テック無尽 | 山梨ITコミュニティ合同イベント">
+  <meta property="og:image" content="https://techmujin.jp/ogp.jpg">
+  <meta property="og:url" content="https://techmujin.jp/">
 
-        @media (orientation: portrait) {
-            .fullscreen-image {
-                width: 100vw;
-                height: auto;
-                min-height: 100vh;
-            }
-        }
+  <!-- canonical -->
+  <link rel="canonical" href="https://techmujin.jp/">
 
-        @media (orientation: landscape) {
-            .fullscreen-image {
-                height: 100vh;
-                width: auto;
-                min-width: 100vw;
-            }
-        }
-    </style>
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="fullscreen-container">
-        <img src="kofu.jpg" alt="Kofu image" class="fullscreen-image">
+
+  <!-- =============================================
+       ヘッダー
+       準備フェーズはシンプルなサイト名＋ナビのみ
+       公開フェーズでロゴ画像・ビジュアル強化を検討
+  ============================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="site-branding">
+        <a href="#top" class="site-logo-link" aria-label="テック無尽 トップへ">
+          <div class="site-name">
+            <span class="site-name-ja" aria-hidden="false">テック無尽</span>
+            <span class="site-name-en" aria-hidden="true">TECH MUJIN</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ハンバーガーメニューボタン（スマホ用） -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="globalNav" aria-label="メニューを開く">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <!-- グローバルナビゲーション -->
+      <nav class="global-nav" id="globalNav" aria-label="ページ内ナビゲーション">
+        <ul class="nav-list" role="list">
+          <li><a href="#about" class="nav-link">テック無尽とは</a></li>
+          <li><a href="#community" class="nav-link">参加コミュニティ募集</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =============================================
+         導入セクション
+         2026年7月以降の公開フェーズでは
+         キービジュアル・キャッチコピーを追加する想定
+    ============================================= -->
+    <section class="section-intro" aria-labelledby="intro-heading">
+      <div class="container intro-inner">
+        <h1 class="intro-title" id="intro-heading">
+          <img src="images/logo.svg" alt="テック無尽" class="intro-logo">
+        </h1>
+        <p class="intro-subtitle">山梨ITコミュニティ合同イベント</p>
+        <dl class="event-meta">
+          <div class="event-meta-item">
+            <dt class="visually-hidden">開催予定日</dt>
+            <dd class="event-meta-date">2026年11月22日（日）開催予定</dd>
+          </div>
+          <div class="event-meta-item">
+            <dt class="visually-hidden">開催予定場所</dt>
+            <dd class="event-meta-venue">山梨県立図書館 イベントスペース</dd>
+          </div>
+        </dl>
+        <p class="intro-note" role="note">
+          現在、コミュニティ関係者・運営スタッフ向けに準備を進めています。
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================================
+         テック無尽とは
+         公開フェーズで登壇者情報・タイムテーブルを追加予定
+    ============================================= -->
+    <section class="section-about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 class="section-heading" id="about-heading">テック無尽とは</h2>
+        <div class="section-body prose">
+          <p>テック無尽は、山梨県内で活動するITコミュニティが一堂に会する合同イベントです。</p>
+          <p>
+            それぞれのコミュニティが個別に活動してきた中で、「横につながる場」をつくりたいという想いから、このプロジェクトが立ち上がりました。
+          </p>
+          <p>
+            コミュニティ紹介、ライトニングトーク、ブース展示、交流などを通して、山梨のITコミュニティの現在地を見える形にすることを目指しています。
+          </p>
+          <p class="note-text">現在は、イベント開催に向けた準備フェーズです。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         参加コミュニティ募集
+         本番フォームへの接続は公開フェーズで対応予定
+    ============================================= -->
+    <section class="section-recruit section-community" id="community" aria-labelledby="community-heading">
+      <div class="container">
+        <h2 class="section-heading" id="community-heading">参加コミュニティを募集しています</h2>
+        <div class="section-body prose">
+          <p>テック無尽では、参加いただけるITコミュニティを募集しています。</p>
+          <ul class="criteria-list" role="list">
+            <li>山梨県内で活動している</li>
+            <li>ITに関するテーマを扱っている</li>
+            <li>規模は問いません</li>
+          </ul>
+          <p>既存のコミュニティはもちろん、これから立ち上げを検討している段階でも歓迎します。</p>
+          <p>まずはお気軽にご連絡ください。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       フッター
+       公開フェーズでSNSリンク・プライバシーポリシーを追加予定
+  ============================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-social">
+        <a href="https://www.facebook.com/techmujin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook ページを開く">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Facebook</span>
+        </a>
+        <a href="https://note.com/techmujin/m/m61bd7c72cd8c" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="運営ブログ（note）を開く">
+          <span>運営ブログ（note）</span>
+        </a>
+      </div>
+      <p class="footer-copy">
+        <small>&copy; テック無尽</small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
