@@ -5,8 +5,13 @@
   "observability": {
     "enabled": true
   },
+  "main": "src/worker.js",
   "assets": {
     "directory": "."
+  },
+  "vars": {
+    "CONTACT_TO": "info@techmujin.jp",
+    "CONTACT_FROM": "テック無尽 <noreply@techmujin.jp>"
   },
   "compatibility_flags": [
     "nodejs_compat"
