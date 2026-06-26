@@ -23,10 +23,10 @@ Variables:
 ```text
 TURNSTILE_SITE_KEY=...
 CONTACT_TO=info@techmujin.jp
-CONTACT_FROM=テック無尽 <noreply@techmujin.jp>
+CONTACT_FROM=テック無尽 <noreply@notify.techmujin.jp>
 ```
 
-`CONTACT_TO` と `CONTACT_FROM` は `wrangler.jsonc` にも既定値があります。`CONTACT_FROM` には Resend で認証済みのドメインを使ってください。
+`CONTACT_TO` と `CONTACT_FROM` は `wrangler.jsonc` にも既定値があります。`CONTACT_FROM` には Resend で認証済みの `notify.techmujin.jp` を使います。
 
 ## ローカル確認
 

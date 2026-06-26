@@ -2,4 +2,4 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 TURNSTILE_SECRET_KEY=0x4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 TURNSTILE_SITE_KEY=0x4AAAAAAAAAAAAAAAAAAAAA
 CONTACT_TO=info@techmujin.jp
-CONTACT_FROM=テック無尽 <noreply@techmujin.jp>
+CONTACT_FROM=テック無尽 <noreply@notify.techmujin.jp>

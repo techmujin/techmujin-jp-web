@@ -11,7 +11,7 @@
   },
   "vars": {
     "CONTACT_TO": "info@techmujin.jp",
-    "CONTACT_FROM": "テック無尽 <noreply@techmujin.jp>"
+    "CONTACT_FROM": "テック無尽 <noreply@notify.techmujin.jp>"
   },
   "compatibility_flags": [
     "nodejs_compat"
