@@ -16,12 +16,12 @@ Secrets:
 ```sh
 npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put TURNSTILE_SECRET_KEY
+npx wrangler secret put TURNSTILE_SITE_KEY
 ```
 
 Variables:
 
 ```text
-TURNSTILE_SITE_KEY=...
 CONTACT_TO=info@techmujin.jp
 CONTACT_FROM=テック無尽 <noreply@notify.techmujin.jp>
 ```
