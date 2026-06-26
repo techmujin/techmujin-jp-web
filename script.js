@@ -5,6 +5,7 @@
  * 目次:
  * 1. ページ内スムーズスクロール
  * 2. ハンバーガーメニュー開閉
+ * 3. お問い合わせフォーム
  */
 
 'use strict';
@@ -15,6 +16,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavToggle();
+  initContactForm();
 });
 
 
@@ -106,4 +108,42 @@ function initNavToggle() {
   }
 }
 
+
+/* =============================================
+   3. お問い合わせフォーム
+   入力内容をメール本文に整形してメーラーを開く
+============================================= */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const contactEmail = 'info@techmujin.jp';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const subject = String(formData.get('subject') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const mailSubject = `【テック無尽】お問い合わせ: ${subject}`;
+    const mailBody = [
+      'テック無尽へのお問い合わせ',
+      '',
+      `お名前: ${name}`,
+      `メールアドレス: ${email}`,
+      `お問い合わせ種別: ${subject}`,
+      '',
+      'お問い合わせ内容:',
+      message
+    ].join('\n');
+
+    const mailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    window.location.href = mailtoUrl;
+  });
+}
 
