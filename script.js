@@ -111,39 +111,78 @@ function initNavToggle() {
 
 /* =============================================
    3. お問い合わせフォーム
-   入力内容をメール本文に整形してメーラーを開く
+   入力内容を API に送信する
 ============================================= */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  const contactEmail = 'info@techmujin.jp';
+  const status = document.getElementById('contactFormStatus');
+  const submitButton = form.querySelector('.contact-submit');
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!form.reportValidity()) return;
 
     const formData = new FormData(form);
-    const name = String(formData.get('name') || '').trim();
-    const email = String(formData.get('email') || '').trim();
-    const subject = String(formData.get('subject') || '').trim();
-    const message = String(formData.get('message') || '').trim();
+    const turnstileToken = String(formData.get('cf-turnstile-response') || '').trim();
 
-    const mailSubject = `【テック無尽】お問い合わせ: ${subject}`;
-    const mailBody = [
-      'テック無尽へのお問い合わせ',
-      '',
-      `お名前: ${name}`,
-      `メールアドレス: ${email}`,
-      `お問い合わせ種別: ${subject}`,
-      '',
-      'お問い合わせ内容:',
-      message
-    ].join('\n');
+    if (!turnstileToken) {
+      setContactFormStatus(status, '認証を完了してから送信してください。', 'error');
+      return;
+    }
 
-    const mailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-    window.location.href = mailtoUrl;
+    setContactFormPending(submitButton, true);
+    setContactFormStatus(status, '送信しています。', 'info');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: String(formData.get('name') || '').trim(),
+          email: String(formData.get('email') || '').trim(),
+          subject: String(formData.get('subject') || '').trim(),
+          message: String(formData.get('message') || '').trim(),
+          turnstileToken
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit contact form');
+      }
+
+      form.reset();
+      resetTurnstileWidget();
+      setContactFormStatus(status, 'お問い合わせを送信しました。ありがとうございます。', 'success');
+    } catch {
+      resetTurnstileWidget();
+      setContactFormStatus(status, '送信できませんでした。時間をおいてもう一度お試しください。', 'error');
+    } finally {
+      setContactFormPending(submitButton, false);
+    }
   });
 }
 
+function setContactFormPending(button, isPending) {
+  if (!button) return;
+
+  button.disabled = isPending;
+  button.textContent = isPending ? '送信中...' : '送信する';
+}
+
+function setContactFormStatus(status, message, type) {
+  if (!status) return;
+
+  status.textContent = message;
+  status.dataset.status = type;
+}
+
+function resetTurnstileWidget() {
+  if (window.turnstile) {
+    window.turnstile.reset();
+  }
+}

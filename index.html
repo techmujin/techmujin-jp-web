@@ -27,6 +27,9 @@
 
   <!-- スタイルシート -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -171,8 +174,11 @@
             <textarea class="form-textarea" id="contactMessage" name="message" rows="7" required></textarea>
           </div>
 
-          <p class="form-note">送信ボタンを押すと、入力内容を反映したメール作成画面が開きます。</p>
-          <button class="btn btn-primary contact-submit" type="submit">送信内容をメールで開く</button>
+          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+
+          <p class="form-note">送信ボタンを押すと、入力内容を運営宛に送信します。</p>
+          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+          <button class="btn btn-primary contact-submit" type="submit">送信する</button>
         </form>
       </div>
     </section>

@@ -9,9 +9,28 @@ export default {
       return handleContactRequest(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    return handleAssetRequest(request, env);
   }
 };
+
+async function handleAssetRequest(request, env) {
+  const response = await env.ASSETS.fetch(request);
+  const contentType = response.headers.get('Content-Type') || '';
+
+  if (!contentType.includes('text/html')) {
+    return response;
+  }
+
+  const html = await response.text();
+  const headers = new Headers(response.headers);
+  headers.delete('Content-Length');
+
+  return new Response(html.replace('__TURNSTILE_SITE_KEY__', env.TURNSTILE_SITE_KEY || ''), {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
 
 async function handleContactRequest(request, env) {
   if (request.method !== 'POST') {

@@ -530,6 +530,10 @@ section:nth-child(even) {
   outline: none;
   box-shadow: var(--shadow-focus);
 }
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
 
 .btn-primary {
   background-color: var(--color-primary);
@@ -615,6 +619,25 @@ section:nth-child(even) {
   margin: 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
+}
+
+.form-status {
+  min-height: 1.8em;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.form-status[data-status="info"] {
+  color: var(--color-text-muted);
+}
+
+.form-status[data-status="success"] {
+  color: var(--color-accent);
+}
+
+.form-status[data-status="error"] {
+  color: var(--color-primary);
 }
 
 .contact-submit {
