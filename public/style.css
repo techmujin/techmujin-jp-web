@@ -12,9 +12,10 @@
    6. 導入セクション
    7. テック無尽とはセクション
    8. 募集セクション（コミュニティ・スタッフ）
-  9. フッター
-  10. ユーティリティ
-  11. レスポンシブ
+   9. お問い合わせセクション
+  10. フッター
+  11. ユーティリティ
+  12. レスポンシブ
 ============================================= */
 
 
@@ -529,6 +530,10 @@ section:nth-child(even) {
   outline: none;
   box-shadow: var(--shadow-focus);
 }
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
 
 .btn-primary {
   background-color: var(--color-primary);
@@ -548,7 +553,100 @@ section:nth-child(even) {
 
 
 /* =============================================
-  9. フッター
+   9. お問い合わせセクション
+============================================= */
+.section-contact {
+  background-color: var(--color-bg-white);
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.form-label {
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: var(--line-height-heading);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-white);
+  color: var(--color-text);
+  font: inherit;
+  padding: var(--space-3) var(--space-4);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.form-status {
+  min-height: 1.8em;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.form-status[data-status="info"] {
+  color: var(--color-text-muted);
+}
+
+.form-status[data-status="success"] {
+  color: var(--color-accent);
+}
+
+.form-status[data-status="error"] {
+  color: var(--color-primary);
+}
+
+.contact-submit {
+  justify-self: start;
+}
+
+
+/* =============================================
+  10. フッター
 ============================================= */
 .site-footer {
   background-color: var(--color-text);
@@ -596,7 +694,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-  10. ユーティリティ
+  11. ユーティリティ
 ============================================= */
 /* スクリーンリーダー専用テキスト */
 .visually-hidden {
@@ -613,7 +711,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-  11. レスポンシブ
+  12. レスポンシブ
 ============================================= */
 
 /* タブレット以下（768px 未満） */
@@ -684,6 +782,10 @@ section:nth-child(even) {
     width: 100%;
     text-align: center;
     justify-content: center;
+  }
+
+  .contact-submit {
+    justify-self: stretch;
   }
 }
 

@@ -5,6 +5,7 @@
  * 目次:
  * 1. ページ内スムーズスクロール
  * 2. ハンバーガーメニュー開閉
+ * 3. お問い合わせフォーム
  */
 
 'use strict';
@@ -15,6 +16,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavToggle();
+  initContactForm();
 });
 
 
@@ -107,3 +109,80 @@ function initNavToggle() {
 }
 
 
+/* =============================================
+   3. お問い合わせフォーム
+   入力内容を API に送信する
+============================================= */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const status = document.getElementById('contactFormStatus');
+  const submitButton = form.querySelector('.contact-submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    const turnstileToken = String(formData.get('cf-turnstile-response') || '').trim();
+
+    if (!turnstileToken) {
+      setContactFormStatus(status, '認証を完了してから送信してください。', 'error');
+      return;
+    }
+
+    setContactFormPending(submitButton, true);
+    setContactFormStatus(status, '送信しています。', 'info');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: String(formData.get('name') || '').trim(),
+          email: String(formData.get('email') || '').trim(),
+          subject: String(formData.get('subject') || '').trim(),
+          message: String(formData.get('message') || '').trim(),
+          turnstileToken
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit contact form');
+      }
+
+      form.reset();
+      resetTurnstileWidget();
+      setContactFormStatus(status, 'お問い合わせを送信しました。ありがとうございます。', 'success');
+    } catch {
+      resetTurnstileWidget();
+      setContactFormStatus(status, '送信できませんでした。時間をおいてもう一度お試しください。', 'error');
+    } finally {
+      setContactFormPending(submitButton, false);
+    }
+  });
+}
+
+function setContactFormPending(button, isPending) {
+  if (!button) return;
+
+  button.disabled = isPending;
+  button.textContent = isPending ? '送信中...' : '送信する';
+}
+
+function setContactFormStatus(status, message, type) {
+  if (!status) return;
+
+  status.textContent = message;
+  status.dataset.status = type;
+}
+
+function resetTurnstileWidget() {
+  if (window.turnstile) {
+    window.turnstile.reset();
+  }
+}

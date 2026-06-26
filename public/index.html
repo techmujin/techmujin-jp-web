@@ -27,6 +27,9 @@
 
   <!-- スタイルシート -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -58,6 +61,7 @@
         <ul class="nav-list" role="list">
           <li><a href="#about" class="nav-link">テック無尽とは</a></li>
           <li><a href="#community" class="nav-link">参加コミュニティ募集</a></li>
+          <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
         </ul>
       </nav>
     </div>
@@ -129,6 +133,53 @@
           <p>既存のコミュニティはもちろん、これから立ち上げを検討している段階でも歓迎します。</p>
           <p>まずはお気軽にご連絡ください。</p>
         </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         お問い合わせ
+         本番フォームサービスへの接続は公開フェーズで対応予定
+    ============================================= -->
+    <section class="section-contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 class="section-heading" id="contact-heading">お問い合わせ</h2>
+        <div class="section-body prose">
+          <p>参加コミュニティ、運営協力、取材などについてのお問い合わせはこちらからお送りください。</p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-field">
+            <label class="form-label" for="contactName">お名前</label>
+            <input class="form-input" type="text" id="contactName" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="contactEmail">メールアドレス</label>
+            <input class="form-input" type="email" id="contactEmail" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="contactSubject">お問い合わせ種別</label>
+            <select class="form-select" id="contactSubject" name="subject" required>
+              <option value="">選択してください</option>
+              <option value="参加コミュニティについて">参加コミュニティについて</option>
+              <option value="運営協力について">運営協力について</option>
+              <option value="取材・広報について">取材・広報について</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="contactMessage">お問い合わせ内容</label>
+            <textarea class="form-textarea" id="contactMessage" name="message" rows="7" required></textarea>
+          </div>
+
+          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+
+          <p class="form-note">送信ボタンを押すと、入力内容を運営宛に送信します。</p>
+          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+          <button class="btn btn-primary contact-submit" type="submit">送信する</button>
+        </form>
       </div>
     </section>
 
