@@ -472,6 +472,16 @@ section:nth-child(even) {
   color: rgba(255, 255, 255, 0.98);
   font-weight: 600;
 }
+.event-meta-venue {
+  font-size: var(--font-size-xl);
+}
+.event-meta-venue-note {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
 
 /* 注記 */
 .intro-note {
@@ -811,6 +821,10 @@ section:nth-child(even) {
   .event-meta-date,
   .event-meta-venue {
     font-size: var(--font-size-base);
+  }
+
+  .event-meta-venue {
+    font-size: var(--font-size-lg);
   }
 
   .intro-note {
