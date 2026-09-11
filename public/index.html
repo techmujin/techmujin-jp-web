@@ -4,28 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ページタイトル -->
-  <title>テック無尽 | 山梨ITコミュニティ合同イベント</title>
+  <title>テック無尽 2026 | 山梨ITコミュニティ合同イベント</title>
 
-  <!-- メタディスクリプション -->
-  <meta name="description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。2026年11月22日（日）、山梨大学 甲府キャンパスで開催予定。参加コミュニティ紹介、LT、ブース展示、交流など。参加費無料・どなたでも参加できます。">
+  <meta name="description" content="テック無尽は山梨県内のITコミュニティ13団体が一堂に会する合同イベントです。2026年11月22日（日）、山梨大学 甲府キャンパスで開催。参加費無料、聞くだけ・見るだけの参加も歓迎します。">
 
-  <!-- OGP 基本設定 -->
-  <meta property="og:title" content="テック無尽 | 山梨ITコミュニティ合同イベント">
-  <meta property="og:description" content="テック無尽は山梨県内ITコミュニティによる合同イベントです。2026年11月22日（日）、山梨大学 甲府キャンパスで開催予定。参加費無料・どなたでも参加できます。">
+  <!-- OGP -->
+  <meta property="og:title" content="テック無尽 2026 | 山梨ITコミュニティ合同イベント">
+  <meta property="og:description" content="山梨のITコミュニティ13団体が一堂に会する1日。2026年11月22日（日）、山梨大学 甲府キャンパス。参加費無料。">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="テック無尽 | 山梨ITコミュニティ合同イベント">
+  <meta property="og:site_name" content="テック無尽 2026">
   <meta property="og:image" content="https://techmujin.jp/ogp.jpg">
   <meta property="og:url" content="https://techmujin.jp/">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- canonical -->
   <link rel="canonical" href="https://techmujin.jp/">
-
-  <!-- favicon -->
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- スタイルシート -->
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <!-- Cloudflare Turnstile -->
@@ -33,502 +33,795 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- =============================================
+     ヘッダー
+============================================= -->
+<header class="header" id="header" data-state="top">
+  <div class="header-inner">
+    <a class="header-brand" href="#hero" aria-label="テック無尽 トップへ">
+      <span class="header-brand-ja">テック無尽</span>
+      <span class="header-brand-en">TECH MUJIN 2026</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="ページ内ナビゲーション">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="#about">テック無尽とは</a></li>
+        <li><a class="nav-link" href="#outline">開催概要</a></li>
+        <li><a class="nav-link" href="#sessions">コンテンツ</a></li>
+        <li><a class="nav-link" href="#timetable">タイムテーブル</a></li>
+        <li><a class="nav-link" href="#communities">コミュニティ</a></li>
+        <li><a class="nav-link" href="#access">アクセス</a></li>
+        <li><a class="nav-link" href="#contact">お問い合わせ</a></li>
+      </ul>
+      <!-- TODO: connpassの実URLに差し替える -->
+      <a class="nav-cta" href="https://techmujin.connpass.com/event/000000/" target="_blank" rel="noopener noreferrer">参加申込</a>
+    </nav>
+
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="メニューを開く">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
   <!-- =============================================
-       ヘッダー
+       ヒーロー
   ============================================= -->
-  <header class="site-header" role="banner">
-    <div class="header-inner container">
-      <div class="site-branding">
-        <a href="#top" class="site-logo-link" aria-label="テック無尽 トップへ">
-          <div class="site-name">
-            <span class="site-name-ja" aria-hidden="false">テック無尽</span>
-            <span class="site-name-en" aria-hidden="true">TECH MUJIN</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- ハンバーガーメニューボタン（スマホ用） -->
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="globalNav" aria-label="メニューを開く">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-
-      <!-- グローバルナビゲーション -->
-      <nav class="global-nav" id="globalNav" aria-label="ページ内ナビゲーション">
-        <ul class="nav-list" role="list">
-          <li><a href="#overview" class="nav-link">イベント概要</a></li>
-          <li><a href="#content" class="nav-link">コンテンツ</a></li>
-          <li><a href="#timetable" class="nav-link">タイムテーブル</a></li>
-          <li><a href="#communities" class="nav-link">参加コミュニティ</a></li>
-          <li><a href="#access" class="nav-link">アクセス</a></li>
-          <li><a href="#coc" class="nav-link">行動規範</a></li>
-          <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
-        </ul>
-      </nav>
+  <section class="hero" id="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="images/bg.jpg" alt="">
     </div>
-  </header>
+    <div class="hero-fins" aria-hidden="true"></div>
 
-  <main id="top">
+    <div class="hero-inner">
+      <p class="hero-eyebrow"><span>山梨ITコミュニティ合同イベント</span></p>
 
-    <!-- =============================================
-         ヒーロー
-    ============================================= -->
-    <section class="section-intro" aria-labelledby="intro-heading">
-      <div class="container intro-inner">
-        <h1 class="intro-title" id="intro-heading">
-          <img src="images/logo.svg" alt="テック無尽" class="intro-logo">
-        </h1>
-        <p class="intro-subtitle">山梨ITコミュニティ合同イベント</p>
-        <dl class="event-meta">
-          <div class="event-meta-item">
-            <dt class="visually-hidden">開催日</dt>
-            <dd class="event-meta-date">2026年11月22日（日）開催予定</dd>
-          </div>
-          <div class="event-meta-item">
-            <dt class="visually-hidden">開催時間</dt>
-            <dd class="event-meta-time">10:00〜17:00（予定）</dd>
-          </div>
-          <div class="event-meta-item">
-            <dt class="visually-hidden">開催予定場所</dt>
-            <dd class="event-meta-venue">
-              山梨大学 甲府キャンパス
-              <span class="event-meta-venue-note">山梨県立図書館から変更となりました</span>
-            </dd>
-          </div>
-          <div class="event-meta-item">
-            <dt class="visually-hidden">参加費</dt>
-            <dd class="event-meta-fee">参加費：無料（予定）</dd>
-          </div>
-        </dl>
-        <p class="intro-note" role="note">
-          初めての方も大歓迎です。聞くだけ・見るだけの参加も歓迎します。
-        </p>
-        <div class="intro-actions">
-          <!-- TODO: connpassの実URLに差し替える -->
-          <a class="btn btn-primary" href="https://techmujin.connpass.com/event/000000/" target="_blank" rel="noopener noreferrer">参加申込む（connpass）</a>
+      <h1 class="hero-logo">
+        <img src="images/logo.svg" alt="テック無尽 2026">
+      </h1>
+
+      <p class="hero-date">
+        <span class="hero-date-y">2026</span><span class="hero-date-dot">.</span><span class="hero-date-md">11.22</span><span class="hero-date-dow">SUN</span>
+      </p>
+
+      <dl class="hero-facts">
+        <div>
+          <dt>TIME</dt>
+          <dd>10:00 – 17:00<small>予定</small></dd>
         </div>
-        <p class="intro-sns">
-          最新情報はSNSで発信中：
+        <div>
+          <dt>VENUE</dt>
+          <dd>山梨大学 甲府キャンパス<small>共創環境棟 治ホール</small></dd>
+        </div>
+        <div>
+          <dt>TICKET</dt>
+          <dd>参加費 無料<small>予定</small></dd>
+        </div>
+      </dl>
+
+      <p class="hero-lead">初めての方も大歓迎です。<br>聞くだけ・見るだけの参加も歓迎します。</p>
+
+      <div class="hero-actions">
+        <!-- TODO: connpassの実URLに差し替える -->
+        <a class="btn btn-lg" href="https://techmujin.connpass.com/event/000000/" target="_blank" rel="noopener noreferrer">
+          参加申込む
+          <small>connpass</small>
+        </a>
+        <p class="hero-sns">
+          最新情報：
           <a href="https://www.facebook.com/techmujin" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="https://www.instagram.com/techmujin/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://note.com/techmujin/m/m61bd7c72cd8c" target="_blank" rel="noopener noreferrer">note</a>
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =============================================
-         イベント概要
-    ============================================= -->
-    <section class="section-overview" id="overview" aria-labelledby="overview-heading">
-      <div class="container">
-        <h2 class="section-heading" id="overview-heading">イベント概要</h2>
-        <div class="table-scroll">
-          <table class="info-table">
-            <tbody>
-              <tr><th scope="row">開催日</th><td>2026年11月22日（日）</td></tr>
-              <tr><th scope="row">開催時間</th><td>10:00〜17:00（予定）<br><span class="table-note">懇親会 18:30〜（任意参加）</span></td></tr>
-              <tr><th scope="row">会場</th><td>山梨大学 甲府キャンパス 共創環境棟 治ホール</td></tr>
-              <tr><th scope="row">参加費</th><td>無料（予定）</td></tr>
-              <tr><th scope="row">主催</th><td>テック無尽</td></tr>
-              <tr><th scope="row">協力</th><td>山梨大学</td></tr>
-              <tr><th scope="row">後援</th><td>一般社団法人山梨工業会、一般社団法人山梨県情報通信業協会（予定・調整中）</td></tr>
-              <tr><th scope="row">対象</th><td>ITに興味のある学生、若手エンジニア・社会人、コミュニティ参加者・未参加者、企業のDX推進・IT企画担当者、地域のIT活動に関心のある方など、どなたでも</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="overview-cta">
-          <!-- TODO: connpassの実URLに差し替える -->
-          <a class="btn btn-primary" href="https://techmujin.connpass.com/event/000000/" target="_blank" rel="noopener noreferrer">参加申込む（connpass）</a>
-        </div>
-      </div>
-    </section>
+  <!-- ファクトストリップ -->
+  <div class="factstrip">
+    <div class="factstrip-track" aria-hidden="true">
+      <span>2026.11.22 SUN</span><i></i>
+      <span>山梨大学 甲府キャンパス 治ホール</span><i></i>
+      <span>参加費無料</span><i></i>
+      <span>13 COMMUNITIES</span><i></i>
+      <span>LT ／ ブース ／ 交流</span><i></i>
+      <span>2026.11.22 SUN</span><i></i>
+      <span>山梨大学 甲府キャンパス 治ホール</span><i></i>
+      <span>参加費無料</span><i></i>
+      <span>13 COMMUNITIES</span><i></i>
+      <span>LT ／ ブース ／ 交流</span><i></i>
+    </div>
+  </div>
 
-    <!-- =============================================
-         テック無尽とは
-    ============================================= -->
-    <section class="section-about" id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <h2 class="section-heading" id="about-heading">テック無尽とは</h2>
-        <div class="section-body prose">
-          <p>テック無尽は、山梨県内で活動するITコミュニティが一堂に会する合同イベントです。</p>
-          <p>
-            それぞれのコミュニティが個別に活動してきた中で、「横につながる場」をつくりたいという想いから、このプロジェクトが立ち上がりました。
-          </p>
-          <p>
-            コミュニティ紹介、ライトニングトーク、ブース展示、交流などを通して、山梨のITコミュニティの現在地を見える形にすることを目指しています。
-          </p>
+  <!-- =============================================
+       01 テック無尽とは
+  ============================================= -->
+  <section class="section section-about" id="about">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">01</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">テック無尽とは</h2>
+          <p class="sec-en">ABOUT</p>
         </div>
-        <ul class="concept-list" role="list">
-          <li class="concept-item">
-            <span class="concept-term">コミュニティ主体</span>
-            <span class="concept-desc">主役は特定の組織や個人ではなく、参加コミュニティそのもの。</span>
+      </header>
+
+      <div class="about-grid">
+        <div class="about-body" data-reveal>
+          <p class="about-lead">山梨のITコミュニティが、<br class="br-pc">一堂に会する1日。</p>
+          <p>それぞれのコミュニティが個別に活動してきた中で、「横につながる場」をつくりたいという想いから、このプロジェクトは立ち上がりました。</p>
+          <p>コミュニティ紹介、ライトニングトーク、ブース展示、交流。さまざまな関わり方を通して、山梨のITコミュニティの現在地を見える形にすることを目指しています。</p>
+        </div>
+
+        <ul class="concepts" data-reveal>
+          <li>
+            <span class="concept-no">01</span>
+            <h3>コミュニティ主体</h3>
+            <p>主役は特定の組織や個人ではなく、参加コミュニティそのもの。</p>
           </li>
-          <li class="concept-item">
-            <span class="concept-term">参加者主役</span>
-            <span class="concept-desc">登壇者や運営だけでなく、参加者一人ひとりが主役です。</span>
+          <li>
+            <span class="concept-no">02</span>
+            <h3>参加者主役</h3>
+            <p>登壇者や運営だけでなく、参加者一人ひとりが主役です。</p>
           </li>
-          <li class="concept-item">
-            <span class="concept-term">強制しない設計</span>
-            <span class="concept-desc">発表しなくてもOK。聞くだけ・見るだけの参加も歓迎します。</span>
+          <li>
+            <span class="concept-no">03</span>
+            <h3>強制しない設計</h3>
+            <p>発表しなくてもOK。聞くだけ・見るだけの参加も歓迎します。</p>
           </li>
-          <li class="concept-item">
-            <span class="concept-term">横のつながりを生む場</span>
-            <span class="concept-desc">コミュニティ同士、参加者同士の自然な出会いを大切にします。</span>
+          <li>
+            <span class="concept-no">04</span>
+            <h3>横のつながり</h3>
+            <p>コミュニティ同士、参加者同士の自然な出会いを大切にします。</p>
           </li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =============================================
-         コンテンツ紹介
-    ============================================= -->
-    <section class="section-content" id="content" aria-labelledby="content-heading">
-      <div class="container">
-        <h2 class="section-heading" id="content-heading">コンテンツ紹介</h2>
-        <div class="content-grid">
-          <article class="content-card">
-            <h3>オリエンテーション・場づくり</h3>
-            <p>イベントの趣旨や参加の仕方をご案内します。「聞くだけの参加も歓迎」「自由に回遊してOK」など、安心して参加いただくための説明からスタートします。</p>
-          </article>
-          <article class="content-card">
+  <!-- =============================================
+       02 開催概要
+  ============================================= -->
+  <section class="section section-outline" id="outline">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">02</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">開催概要</h2>
+          <p class="sec-en">OUTLINE</p>
+        </div>
+      </header>
+
+      <dl class="outline-list" data-reveal>
+        <div class="outline-row">
+          <dt>開催日</dt>
+          <dd><b>2026年11月22日（日）</b></dd>
+        </div>
+        <div class="outline-row">
+          <dt>開催時間</dt>
+          <dd>10:00 〜 17:00（予定）<span class="muted">／ 懇親会 18:30〜（任意参加）</span></dd>
+        </div>
+        <div class="outline-row">
+          <dt>会場</dt>
+          <dd>山梨大学 甲府キャンパス 共創環境棟 治ホール<span class="muted">／ 山梨県甲府市武田4-4-37</span></dd>
+        </div>
+        <div class="outline-row">
+          <dt>参加費</dt>
+          <dd>無料（予定）</dd>
+        </div>
+        <div class="outline-row">
+          <dt>参加方法</dt>
+          <dd>connpassによる事前申込制</dd>
+        </div>
+        <div class="outline-row">
+          <dt>対象</dt>
+          <dd>ITに興味のある学生、若手エンジニア・社会人、コミュニティ参加者・未参加者、企業のDX推進・IT企画担当者、地域のIT活動に関心のある方など、どなたでも</dd>
+        </div>
+        <div class="outline-row">
+          <dt>主催</dt>
+          <dd>テック無尽</dd>
+        </div>
+        <div class="outline-row">
+          <dt>協力</dt>
+          <dd>山梨大学</dd>
+        </div>
+        <div class="outline-row">
+          <dt>後援</dt>
+          <dd>一般社団法人山梨工業会、一般社団法人山梨県情報通信業協会<span class="muted">／ 予定・調整中</span></dd>
+        </div>
+      </dl>
+
+      <div class="outline-cta" data-reveal>
+        <!-- TODO: connpassの実URLに差し替える -->
+        <a class="btn" href="https://techmujin.connpass.com/event/000000/" target="_blank" rel="noopener noreferrer">
+          参加申込む
+          <small>connpass</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       03 コンテンツ
+  ============================================= -->
+  <section class="section section-sessions" id="sessions">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">03</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">コンテンツ</h2>
+          <p class="sec-en">SESSIONS</p>
+        </div>
+      </header>
+
+      <ol class="sessions">
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">01</p>
+          <div class="session-body">
+            <h3>オリエンテーション</h3>
+            <p>イベントの趣旨や過ごし方をご案内します。「聞くだけの参加も歓迎」「自由に回遊してOK」——安心して過ごすための説明からはじまります。</p>
+          </div>
+        </li>
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">02</p>
+          <div class="session-body">
             <h3>コミュニティ紹介</h3>
-            <p>参加13団体の運営メンバーが登壇し、活動内容や雰囲気を紹介します。技術の詳細よりも「どんな人が、どんな空気で活動しているか」を伝えます。</p>
-          </article>
-          <article class="content-card">
+            <p>参加13団体の運営メンバーが登壇し、1枠5分で活動を紹介します。技術の詳細よりも「どんな人が、どんな空気で活動しているか」を伝える時間です。</p>
+            <p class="session-tag">本イベントのメインコンテンツ</p>
+          </div>
+        </li>
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">03</p>
+          <div class="session-body">
             <h3>スポンサーLT</h3>
-            <p>協賛企業によるライトニングトークです。製品紹介にとどまらず、地域でどんな技術を使い何をしている会社かを知る機会になります。</p>
-          </article>
-          <article class="content-card">
+            <p>協賛企業によるライトニングトーク。製品紹介にとどまらず、地域でどんな技術を使い、何をしている会社かを知る機会になります。</p>
+          </div>
+        </li>
+        <li class="session" data-reveal data-track="t2">
+          <p class="session-no">04</p>
+          <div class="session-body">
             <h3>回遊タイム・昼休憩</h3>
-            <p>ブースを見て回ったり、気になった人と話したり。食事をとりながらでも、自由に過ごせる時間です。</p>
-          </article>
-          <article class="content-card">
+            <p>ブースを見て回ったり、気になった人と話したり、食事をとったり。90分をどう使うかは自由です。</p>
+          </div>
+        </li>
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">05</p>
+          <div class="session-body">
             <h3>コミュニティLT</h3>
-            <p>各コミュニティによるライトニングトーク。コミュニティ紹介よりも一歩踏み込んだ、活動テーマの中身を発表します。</p>
-            <a class="content-card-link" href="#contact">LT登壇にご興味のある方はお問い合わせください</a>
-          </article>
-          <article class="content-card">
-            <h3>代読LT＆テック無尽ラジオ</h3>
-            <p>参加者が投稿したコメントを司会が代読し、そのままゲストを交えたトークコーナーへとつながります。発言が苦手な方でも気軽に関われる仕組みです。</p>
-          </article>
-          <article class="content-card">
-            <h3>クロージング</h3>
-            <p>1日のまとめと、各コミュニティの今後のイベント情報をご案内します。ここで生まれた接点をその後につなげます。</p>
-          </article>
-          <article class="content-card">
-            <h3>懇親会（任意参加）</h3>
-            <p>18:30〜、希望者を対象に開催予定です。本編で話しきれなかった方同士が、よりリラックスした雰囲気で交流できます。</p>
-          </article>
-        </div>
-        <p class="content-note">会場内にはブース出展エリアもあります。<a href="#contact">ブース出展にご興味のある方はお問い合わせください</a>。</p>
-      </div>
-    </section>
-
-    <!-- =============================================
-         タイムテーブル
-    ============================================= -->
-    <section class="section-timetable" id="timetable" aria-labelledby="timetable-heading">
-      <div class="container">
-        <h2 class="section-heading" id="timetable-heading">タイムテーブル（予定）</h2>
-        <div class="table-scroll">
-          <table class="info-table info-table--tracks">
-            <thead>
-              <tr>
-                <th scope="col">時刻</th>
-                <th scope="col">T1 ステージ</th>
-                <th scope="col">T2 ブース</th>
-                <th scope="col">T3 コミュニケーションスペース</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">9:30</th><td>開場・受付（QRコード配布）</td><td>ブース開設</td><td>開放</td></tr>
-              <tr><th scope="row">10:00</th><td>オリエンテーション（10分）</td><td>← 常設 →</td><td>← 終日開放 →</td></tr>
-              <tr><th scope="row">10:15</th><td>コミュニティ紹介（100分・13団体）</td><td>← 常設 →</td><td>← 開放 →</td></tr>
-              <tr><th scope="row">11:55</th><td>スポンサーLT（25分）</td><td>← 常設 →</td><td>← 開放 →</td></tr>
-              <tr><th scope="row">12:20</th><td>回遊タイム＋昼休憩（90分）</td><td>← ピーク →</td><td>← ピーク（飲食・歓談） →</td></tr>
-              <tr><th scope="row">13:50</th><td>コミュニティLT（85分）</td><td>← 常設 →</td><td>← 開放 →</td></tr>
-              <tr><th scope="row">15:25</th><td>代読LT＆テック無尽ラジオ（60分）</td><td>← 常設 →</td><td>← 開放 →</td></tr>
-              <tr><th scope="row">16:30</th><td>クロージング（25分）</td><td>撤収</td><td>撤収</td></tr>
-              <tr><th scope="row">17:00</th><td>イベントクローズ</td><td>–</td><td>–</td></tr>
-              <tr><th scope="row">18:30〜</th><td>懇親会（任意参加・別会場）</td><td>–</td><td>–</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- TODO: 確定次第、実際のタイムテーブルに差し替える -->
-        <p class="table-caveat">※内容・時刻は変更になる場合があります。確定次第更新します。</p>
-        <p class="note-text">ホール外コミュニケーションスペースは終日開放しています。ステージの進行中でも、自由に出入りいただけます。</p>
-      </div>
-    </section>
-
-    <!-- =============================================
-         参加コミュニティ
-    ============================================= -->
-    <section class="section-communities" id="communities" aria-labelledby="communities-heading">
-      <div class="container">
-        <h2 class="section-heading" id="communities-heading">参加コミュニティ</h2>
-        <p class="section-lead">現時点で参加が確定している13コミュニティをご紹介します。</p>
-        <ul class="community-grid" role="list">
-          <li class="community-card"><a href="https://ura-techmujin.connpass.com" target="_blank" rel="noopener noreferrer">裏テック無尽</a></li>
-          <li class="community-card"><a href="https://kainokuni.org" target="_blank" rel="noopener noreferrer">甲斐国もくもく会</a></li>
-          <li class="community-card"><a href="https://shingenpy.connpass.com" target="_blank" rel="noopener noreferrer">Shingen.py</a></li>
-          <li class="community-card"><a href="https://meetup.com/ja-JP/yamanashi-wordpress-meetup" target="_blank" rel="noopener noreferrer">Yamanashi WordPress Meetup</a></li>
-          <li class="community-card"><a href="https://kintonecafe-yamanashi.qloba.com" target="_blank" rel="noopener noreferrer">kintone Café 山梨</a></li>
-          <li class="community-card"><a href="https://soracom.jp/user-group" target="_blank" rel="noopener noreferrer">SORACOM UG 山梨</a></li>
-          <li class="community-card"><a href="https://ai-meetup.connpass.com" target="_blank" rel="noopener noreferrer">東京-山梨 AI ミートアップ</a></li>
-          <li class="community-card"><a href="https://aibase.connpass.com" target="_blank" rel="noopener noreferrer">AI BASE</a></li>
-          <li class="community-card"><a href="https://scratch.itolab.com" target="_blank" rel="noopener noreferrer">スクラッチディ in 山梨</a></li>
-          <li class="community-card"><a href="https://houtoupm.connpass.com" target="_blank" rel="noopener noreferrer">Houtou.pm</a></li>
-          <li class="community-card"><a href="https://kofurb.connpass.com" target="_blank" rel="noopener noreferrer">Kofu.rb</a></li>
-          <!-- TODO: 実URLに差し替える -->
-          <li class="community-card"><a href="https://example.com/jaws-ug-yamanashi" target="_blank" rel="noopener noreferrer">JAWS-UG山梨</a></li>
-          <!-- TODO: 実URLに差し替える -->
-          <li class="community-card"><a href="https://example.com/coderdojo-kofu" target="_blank" rel="noopener noreferrer">コーダー道場甲府</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =============================================
-         アクセス
-    ============================================= -->
-    <section class="section-access" id="access" aria-labelledby="access-heading">
-      <div class="container">
-        <h2 class="section-heading" id="access-heading">アクセス</h2>
-        <div class="access-info prose">
-          <p><strong>山梨大学 甲府キャンパス 共創環境棟 治ホール</strong></p>
-          <p>〒400-8510 山梨県甲府市武田4-4-37</p>
-          <p>JR中央線「甲府駅」から徒歩約15分、または「甲府駅」から武田神社・積翠寺行きバスで「山梨大学」下車 徒歩約5分</p>
-          <p class="note-text">会場内の詳しいご案内は当日掲示します。</p>
-        </div>
-        <h3 class="access-zone-heading">会場構成</h3>
-        <div class="zone-grid">
-          <article class="zone-card">
-            <h4>ステージエリア</h4>
-            <p>ホール前方。コミュニティ紹介・LT・テック無尽ラジオなど、発表コンテンツが進行します。</p>
-          </article>
-          <article class="zone-card">
-            <h4>ブースエリア</h4>
-            <p>ホール内後方。コミュニティや協賛企業の展示・交流ブースが並びます。</p>
-          </article>
-          <article class="zone-card">
-            <h4>コミュニケーションスペース</h4>
-            <p>ホール外、終日開放。座って会話できるスペースです。発表を聞きながらでも、途中で外に出て話しても大丈夫です。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         協賛について
-         公開時は実際の協賛企業ロゴに差し替え済みの想定
-    ============================================= -->
-    <section class="section-sponsor" id="sponsor" aria-labelledby="sponsor-heading">
-      <div class="container">
-        <h2 class="section-heading" id="sponsor-heading">協賛について</h2>
-        <div class="section-body prose">
-          <p>テック無尽の協賛は、単なる広告枠ではなく、地域のITコミュニティとの関係を築く機会として位置づけています。</p>
-        </div>
-
-        <!-- TODO: 確定次第、実際の協賛企業ロゴに差し替える -->
-        <div class="sponsor-tier">
-          <h3 class="sponsor-tier-heading">メインパートナー</h3>
-          <div class="sponsor-logo-grid sponsor-logo-grid--lg">
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
+            <p>各コミュニティによるライトニングトーク。コミュニティ紹介から一歩踏み込んで、活動テーマの中身を発表します。</p>
+            <p class="session-note"><a href="#contact">LT登壇に興味がある方はお問い合わせください →</a></p>
           </div>
-        </div>
-        <div class="sponsor-tier">
-          <h3 class="sponsor-tier-heading">パートナー</h3>
-          <div class="sponsor-logo-grid sponsor-logo-grid--md">
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
+        </li>
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">06</p>
+          <div class="session-body">
+            <h3>代読LT ＆ テック無尽ラジオ</h3>
+            <p>参加者が投稿したコメントを司会が代読し、そのままゲストを交えた公開トークへ。発言が得意でなくても、一歩だけ関われる仕組みです。</p>
           </div>
-        </div>
-        <div class="sponsor-tier">
-          <h3 class="sponsor-tier-heading">サポーター</h3>
-          <div class="sponsor-logo-grid sponsor-logo-grid--sm">
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
-            <div class="sponsor-logo-placeholder">LOGO</div>
+        </li>
+        <li class="session" data-reveal data-track="t2">
+          <p class="session-no">07</p>
+          <div class="session-body">
+            <h3>オープンブース</h3>
+            <p>コミュニティ・個人・協賛企業による展示エリア。終日開設しています。「見るだけ」「立ち寄るだけ」も歓迎です。</p>
+            <p class="session-note"><a href="#contact">ブース出展に興味がある方はお問い合わせください →</a></p>
           </div>
+        </li>
+        <li class="session" data-reveal data-track="t1">
+          <p class="session-no">08</p>
+          <div class="session-body">
+            <h3>クロージング・懇親会</h3>
+            <p>1日のまとめと、各コミュニティの今後の予定をご案内します。終了後18:30からは、希望者を対象とした懇親会を予定しています。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =============================================
+       04 タイムテーブル（ダークバンド）
+  ============================================= -->
+  <section class="section section-timetable" id="timetable">
+    <div class="wrap">
+      <header class="sec-head sec-head-inv" data-reveal>
+        <p class="sec-num">04</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">タイムテーブル</h2>
+          <p class="sec-en">TIMETABLE</p>
+        </div>
+      </header>
+
+      <ul class="track-legend" data-reveal>
+        <li data-track="t1"><b>T1</b> ステージ<span>ホール前方</span></li>
+        <li data-track="t2"><b>T2</b> ブース<span>ホール内</span></li>
+        <li data-track="t3"><b>T3</b> コミュニケーションスペース<span>ホール外</span></li>
+      </ul>
+
+      <p class="schedule-hint" aria-hidden="true">横にスクロールできます →</p>
+
+      <!-- TODO: 確定次第、実際のタイムテーブルに差し替える -->
+      <div class="schedule-scroll" data-reveal>
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th scope="col" class="col-time">時刻</th>
+              <th scope="col" data-track="t1">T1 ステージ</th>
+              <th scope="col" data-track="t2">T2 ブース</th>
+              <th scope="col" data-track="t3">T3 コミュニケーションスペース</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">9:30</th>
+              <td>開場・受付<small>QRコード配布</small></td>
+              <td>ブース開設</td>
+              <td>開放</td>
+            </tr>
+            <tr>
+              <th scope="row">10:00</th>
+              <td>オリエンテーション<small>10分</small></td>
+              <td class="cell-cont"><span>常設</span></td>
+              <td class="cell-cont"><span>終日開放</span></td>
+            </tr>
+            <tr class="is-main">
+              <th scope="row">10:15</th>
+              <td>コミュニティ紹介<small>100分 ／ 13団体</small></td>
+              <td class="cell-cont"><span>常設</span></td>
+              <td class="cell-cont"><span>開放</span></td>
+            </tr>
+            <tr>
+              <th scope="row">11:55</th>
+              <td>スポンサーLT<small>25分</small></td>
+              <td class="cell-cont"><span>常設</span></td>
+              <td class="cell-cont"><span>開放</span></td>
+            </tr>
+            <tr class="is-break">
+              <th scope="row">12:20</th>
+              <td>回遊タイム＋昼休憩<small>90分 ／ ステージ休止</small></td>
+              <td class="cell-peak"><span>ピーク</span></td>
+              <td class="cell-peak"><span>ピーク（飲食・歓談）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">13:50</th>
+              <td>コミュニティLT<small>85分</small></td>
+              <td class="cell-cont"><span>常設</span></td>
+              <td class="cell-cont"><span>開放</span></td>
+            </tr>
+            <tr>
+              <th scope="row">15:25</th>
+              <td>代読LT ＆ テック無尽ラジオ<small>60分</small></td>
+              <td class="cell-cont"><span>常設</span></td>
+              <td class="cell-cont"><span>開放</span></td>
+            </tr>
+            <tr>
+              <th scope="row">16:30</th>
+              <td>クロージング<small>25分</small></td>
+              <td>撤収</td>
+              <td>撤収</td>
+            </tr>
+            <tr>
+              <th scope="row">17:00</th>
+              <td>イベントクローズ</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr class="is-after">
+              <th scope="row">18:30</th>
+              <td>懇親会<small>任意参加 ／ 別会場</small></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="schedule-note">※内容・時刻は変更になる場合があります。確定次第更新します。ホール外のコミュニケーションスペースは終日開放しており、ステージの進行中でも自由に出入りいただけます。</p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       05 参加コミュニティ
+  ============================================= -->
+  <section class="section section-communities" id="communities">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">05</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">参加コミュニティ</h2>
+          <p class="sec-en">COMMUNITIES<span class="sec-count">13</span></p>
+        </div>
+      </header>
+
+      <ol class="com-list">
+        <li class="com-item" data-reveal>
+          <a href="https://ura-techmujin.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">01</span>
+            <span class="com-name">裏テック無尽</span>
+            <span class="com-host">ura-techmujin.connpass.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://kainokuni.org" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">02</span>
+            <span class="com-name">甲斐国もくもく会</span>
+            <span class="com-host">kainokuni.org</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://shingenpy.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">03</span>
+            <span class="com-name">Shingen.py</span>
+            <span class="com-host">shingenpy.connpass.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://meetup.com/ja-JP/yamanashi-wordpress-meetup" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">04</span>
+            <span class="com-name">Yamanashi WordPress Meetup</span>
+            <span class="com-host">meetup.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://kintonecafe-yamanashi.qloba.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">05</span>
+            <span class="com-name">kintone Café 山梨</span>
+            <span class="com-host">kintonecafe-yamanashi.qloba.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://soracom.jp/user-group" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">06</span>
+            <span class="com-name">SORACOM UG 山梨</span>
+            <span class="com-host">soracom.jp</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://ai-meetup.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">07</span>
+            <span class="com-name">東京-山梨 AI ミートアップ</span>
+            <span class="com-host">ai-meetup.connpass.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://aibase.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">08</span>
+            <span class="com-name">AI BASE</span>
+            <span class="com-host">aibase.connpass.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://scratch.itolab.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">09</span>
+            <span class="com-name">スクラッチディ in 山梨</span>
+            <span class="com-host">scratch.itolab.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://houtoupm.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">10</span>
+            <span class="com-name">Houtou.pm</span>
+            <span class="com-host">houtoupm.connpass.com</span>
+          </a>
+        </li>
+        <li class="com-item" data-reveal>
+          <a href="https://kofurb.connpass.com" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">11</span>
+            <span class="com-name">Kofu.rb</span>
+            <span class="com-host">kofurb.connpass.com</span>
+          </a>
+        </li>
+        <!-- TODO: 実URLに差し替える -->
+        <li class="com-item" data-reveal>
+          <a href="https://example.com/jaws-ug-yamanashi" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">12</span>
+            <span class="com-name">JAWS-UG山梨</span>
+            <span class="com-host">coming soon</span>
+          </a>
+        </li>
+        <!-- TODO: 実URLに差し替える -->
+        <li class="com-item" data-reveal>
+          <a href="https://example.com/coderdojo-kofu" target="_blank" rel="noopener noreferrer">
+            <span class="com-no">13</span>
+            <span class="com-name">コーダー道場甲府</span>
+            <span class="com-host">coming soon</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>裏テック無尽</span><i>◆</i><span>甲斐国もくもく会</span><i>◆</i><span>Shingen.py</span><i>◆</i><span>Yamanashi WordPress Meetup</span><i>◆</i><span>kintone Café 山梨</span><i>◆</i><span>SORACOM UG 山梨</span><i>◆</i><span>東京-山梨 AI ミートアップ</span><i>◆</i><span>AI BASE</span><i>◆</i><span>スクラッチディ in 山梨</span><i>◆</i><span>Houtou.pm</span><i>◆</i><span>Kofu.rb</span><i>◆</i><span>JAWS-UG山梨</span><i>◆</i><span>コーダー道場甲府</span><i>◆</i>
+        <span>裏テック無尽</span><i>◆</i><span>甲斐国もくもく会</span><i>◆</i><span>Shingen.py</span><i>◆</i><span>Yamanashi WordPress Meetup</span><i>◆</i><span>kintone Café 山梨</span><i>◆</i><span>SORACOM UG 山梨</span><i>◆</i><span>東京-山梨 AI ミートアップ</span><i>◆</i><span>AI BASE</span><i>◆</i><span>スクラッチディ in 山梨</span><i>◆</i><span>Houtou.pm</span><i>◆</i><span>Kofu.rb</span><i>◆</i><span>JAWS-UG山梨</span><i>◆</i><span>コーダー道場甲府</span><i>◆</i>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       06 アクセス
+  ============================================= -->
+  <section class="section section-access" id="access">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">06</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">アクセス</h2>
+          <p class="sec-en">ACCESS</p>
+        </div>
+      </header>
+
+      <div class="access-grid">
+        <figure class="access-photo" data-reveal>
+          <img src="images/bg.jpg" alt="山梨大学 甲府キャンパス 共創環境棟の外観">
+          <figcaption>共創環境棟</figcaption>
+        </figure>
+
+        <div class="access-info" data-reveal>
+          <h3 class="access-venue">山梨大学 甲府キャンパス<br>共創環境棟 治ホール</h3>
+          <p class="access-addr">〒400-8510<br>山梨県甲府市武田4-4-37</p>
+          <ul class="access-routes">
+            <li><b>徒歩</b>JR中央線「甲府駅」から約15分</li>
+            <li><b>バス</b>「甲府駅」から武田神社・積翠寺行き「山梨大学」下車 徒歩約5分</li>
+          </ul>
+          <p class="access-note">会場内の詳しいご案内は当日掲示します。</p>
         </div>
       </div>
-    </section>
 
-    <!-- =============================================
-         運営体制
-    ============================================= -->
-    <section class="section-team" id="team" aria-labelledby="team-heading">
-      <div class="container">
-        <h2 class="section-heading" id="team-heading">運営体制</h2>
-        <div class="section-body prose">
-          <p>テック無尽は、山梨県内のITコミュニティ有志による団体「テック無尽」が主催しています。</p>
+      <h3 class="zones-heading" data-reveal>会場は3つのゾーンで構成されます</h3>
+      <ul class="zones">
+        <li class="zone" data-track="t1" data-reveal>
+          <p class="zone-id">T1</p>
+          <h4>ステージエリア</h4>
+          <p class="zone-place">ホール前方</p>
+          <p>コミュニティ紹介・LT・テック無尽ラジオなど、発表コンテンツが進行します。</p>
+        </li>
+        <li class="zone" data-track="t2" data-reveal>
+          <p class="zone-id">T2</p>
+          <h4>ブースエリア</h4>
+          <p class="zone-place">ホール内後方</p>
+          <p>コミュニティ・個人・協賛企業の展示ブースが並びます。終日開設。</p>
+        </li>
+        <li class="zone" data-track="t3" data-reveal>
+          <p class="zone-id">T3</p>
+          <h4>コミュニケーションスペース</h4>
+          <p class="zone-place">ホール外</p>
+          <p>座って話せる、終日開放のスペース。発表の途中で抜けて話しても大丈夫です。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =============================================
+       07 協賛
+       公開時は実際の協賛企業ロゴに差し替え済みの想定
+  ============================================= -->
+  <section class="section section-sponsors" id="sponsors">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">07</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">協賛</h2>
+          <p class="sec-en">SPONSORS</p>
         </div>
-        <!-- TODO: 実名・役割に差し替える -->
-        <ul class="team-grid" role="list">
-          <li class="team-card"><span class="team-role">実行委員長</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">全体設計</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">コンテンツ設計</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">コミュニティ連携</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">広報・周知</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">会場・当日運営</span><span class="team-name">〇〇〇〇</span></li>
-          <li class="team-card"><span class="team-role">財務担当</span><span class="team-name">〇〇〇〇</span></li>
-        </ul>
-        <p class="team-note">準備の様子は<a href="https://note.com/techmujin" target="_blank" rel="noopener noreferrer">note</a>で発信しています。</p>
-        <p class="team-note">運営やコミュニティとしての参加にご関心のある方は<a href="#contact">お問い合わせ</a>ください。</p>
+      </header>
+
+      <p class="sponsors-lead" data-reveal>テック無尽の協賛は、単なる広告枠ではなく、地域のITコミュニティとの関係を築く機会として位置づけています。</p>
+
+      <!-- TODO: 確定次第、実際の協賛企業ロゴに差し替える -->
+      <div class="tier" data-reveal>
+        <h3 class="tier-name"><span>MAIN PARTNER</span>メインパートナー</h3>
+        <div class="tier-logos tier-logos-lg">
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+        </div>
       </div>
-    </section>
-
-    <!-- =============================================
-         行動規範
-    ============================================= -->
-    <section class="section-coc" id="coc" aria-labelledby="coc-heading">
-      <div class="container">
-        <h2 class="section-heading" id="coc-heading">行動規範</h2>
-        <div class="section-body prose">
-          <p>テック無尽は、山梨県内のITコミュニティが立場や経験を問わず安心して集まれる場を目指しています。ご参加いただくすべての方に、以下へのご協力をお願いします。</p>
+      <div class="tier" data-reveal>
+        <h3 class="tier-name"><span>PARTNER</span>パートナー</h3>
+        <div class="tier-logos tier-logos-md">
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
         </div>
+      </div>
+      <div class="tier" data-reveal>
+        <h3 class="tier-name"><span>SUPPORTER</span>サポーター</h3>
+        <div class="tier-logos tier-logos-sm">
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+          <div class="logo-slot">LOGO</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="coc-block">
+  <!-- =============================================
+       08 運営体制
+  ============================================= -->
+  <section class="section section-team" id="team">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">08</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">運営体制</h2>
+          <p class="sec-en">TEAM</p>
+        </div>
+      </header>
+
+      <p class="team-lead" data-reveal>テック無尽は、山梨県内のITコミュニティ有志による団体「テック無尽」が主催しています。</p>
+
+      <!-- TODO: 実名に差し替える -->
+      <ul class="team-list">
+        <li class="member" data-reveal><span class="member-role">実行委員長</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">全体設計</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">コンテンツ設計</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">コミュニティ連携</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">広報・周知</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">会場・当日運営</span><span class="member-name">〇〇 〇〇</span></li>
+        <li class="member" data-reveal><span class="member-role">財務</span><span class="member-name">〇〇 〇〇</span></li>
+      </ul>
+
+      <p class="team-links" data-reveal>
+        準備の様子は<a href="https://note.com/techmujin/m/m61bd7c72cd8c" target="_blank" rel="noopener noreferrer">note</a>で発信しています。運営やコミュニティとしての参加にご関心のある方は<a href="#contact">お問い合わせ</a>ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       09 行動規範
+  ============================================= -->
+  <section class="section section-coc" id="coc">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="sec-num">09</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">行動規範</h2>
+          <p class="sec-en">CODE OF CONDUCT</p>
+        </div>
+      </header>
+
+      <p class="coc-lead" data-reveal>テック無尽は、立場や経験を問わず、誰もが安心して集まれる場を目指しています。ご参加いただくすべての方に、以下へのご協力をお願いします。</p>
+
+      <div class="coc-grid">
+        <section class="coc-block" data-reveal>
           <h3>基本姿勢</h3>
           <p>多様な背景・経験・価値観を持つ参加者に配慮し、初めて参加する方も安心して過ごせる雰囲気づくりにご協力ください。</p>
-        </div>
+        </section>
 
-        <div class="coc-block">
+        <section class="coc-block" data-reveal>
           <h3>禁止事項</h3>
-          <ul class="criteria-list" role="list">
+          <ul class="coc-dont">
             <li>性別、年齢、国籍、障がいの有無、性的指向・性自認、経験レベルなどに基づく差別的な言動</li>
             <li>ハラスメント（暴言、脅迫、つきまとい等を含む）</li>
             <li>参加者・登壇者・出展者・運営への過度な批判や攻撃的な言動</li>
             <li>本人の許可なく撮影した写真・映像・発言内容をSNS等で公開する行為</li>
           </ul>
-        </div>
+        </section>
 
-        <div class="coc-block">
+        <section class="coc-block" data-reveal>
           <h3>発表・展示・会話について</h3>
-          <p>発表や展示へのフィードバックは、敬意を持って行ってください。「聞くだけ」「見るだけ」の参加スタイルも歓迎しており、会話への参加を強要しません。</p>
-        </div>
+          <p>発表や展示へのフィードバックは、敬意を持って行ってください。「聞くだけ」「見るだけ」の参加も歓迎しており、会話への参加を強要することはありません。</p>
+        </section>
 
-        <div class="coc-block">
+        <section class="coc-block" data-reveal>
           <h3>違反があった場合</h3>
           <p>行動規範に反する行為を見かけた、または受けた場合は、会場内のスタッフまたは<a href="#contact">お問い合わせフォーム</a>までご連絡ください。運営が状況を確認のうえ、必要な対応を行います。</p>
-        </div>
-
-        <p class="note-text">本行動規範は、会場内の言動に加え、関連するオンライン上の言動にも適用されます。</p>
+        </section>
       </div>
-    </section>
 
-    <!-- =============================================
-         お問い合わせ
-         本番フォームサービスへの接続は公開フェーズで対応予定
-    ============================================= -->
-    <section class="section-contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <h2 class="section-heading" id="contact-heading">お問い合わせ</h2>
-        <div class="section-body prose">
-          <p>参加コミュニティ、LT登壇・ブース出展、運営協力、協賛、取材などについてのお問い合わせはこちらからお送りください。</p>
-        </div>
-
-        <form class="contact-form" id="contactForm">
-          <div class="form-field">
-            <label class="form-label" for="contactName">お名前</label>
-            <input class="form-input" type="text" id="contactName" name="name" autocomplete="name" required>
-          </div>
-
-          <div class="form-field">
-            <label class="form-label" for="contactEmail">メールアドレス</label>
-            <input class="form-input" type="email" id="contactEmail" name="email" autocomplete="email" required>
-          </div>
-
-          <div class="form-field">
-            <label class="form-label" for="contactSubject">お問い合わせ種別</label>
-            <select class="form-select" id="contactSubject" name="subject" required>
-              <option value="">選択してください</option>
-              <option value="参加コミュニティについて">参加コミュニティについて</option>
-              <option value="LT登壇・ブース出展について">LT登壇・ブース出展について</option>
-              <option value="協賛について">協賛について</option>
-              <option value="運営協力について">運営協力について</option>
-              <option value="取材・広報について">取材・広報について</option>
-              <option value="その他">その他</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label class="form-label" for="contactMessage">お問い合わせ内容</label>
-            <textarea class="form-textarea" id="contactMessage" name="message" rows="7" required></textarea>
-          </div>
-
-          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
-
-          <p class="form-note">送信ボタンを押すと、入力内容を運営宛に送信します。</p>
-          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
-          <button class="btn btn-primary contact-submit" type="submit">送信する</button>
-        </form>
-      </div>
-    </section>
-
-  </main>
+      <p class="coc-scope" data-reveal>本行動規範は、会場内の言動に加え、関連するオンライン上の言動にも適用されます。</p>
+    </div>
+  </section>
 
   <!-- =============================================
-       フッター
+       10 お問い合わせ（ダークバンド）
   ============================================= -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-columns">
-      <div class="footer-col footer-col-brand">
-        <img src="images/logo.svg" alt="テック無尽" class="footer-logo">
-        <p class="footer-tagline">山梨ITコミュニティ合同イベント</p>
-        <p class="footer-organizer">主催：テック無尽</p>
-      </div>
-
-      <div class="footer-col">
-        <h3 class="footer-col-heading">サイト内リンク</h3>
-        <ul class="footer-link-list" role="list">
-          <li><a href="#overview">イベント概要</a></li>
-          <li><a href="#content">コンテンツ</a></li>
-          <li><a href="#timetable">タイムテーブル</a></li>
-          <li><a href="#communities">参加コミュニティ</a></li>
-          <li><a href="#access">アクセス</a></li>
-          <li><a href="#sponsor">協賛について</a></li>
-          <li><a href="#coc">行動規範</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3 class="footer-col-heading">SNS・リンク</h3>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/techmujin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook ページを開く">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            <span>Facebook</span>
-          </a>
-          <a href="https://www.instagram.com/techmujin/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram ページを開く">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5z"/>
-              <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
-              <circle cx="17.5" cy="6.5" r="1.25"/>
-            </svg>
-            <span>Instagram</span>
-          </a>
-          <a href="https://note.com/techmujin/m/m61bd7c72cd8c" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="運営ブログ（note）を開く">
-            <span>運営ブログ（note）</span>
-          </a>
-          <a href="https://techmujin.connpass.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="connpassグループを開く">
-            <span>connpass</span>
-          </a>
+  <section class="section section-contact" id="contact">
+    <div class="wrap">
+      <header class="sec-head sec-head-inv" data-reveal>
+        <p class="sec-num">10</p>
+        <div class="sec-title-group">
+          <h2 class="sec-title">お問い合わせ</h2>
+          <p class="sec-en">CONTACT</p>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        <small>&copy; テック無尽</small>
-      </p>
-    </div>
-  </footer>
+      </header>
 
-  <script src="script.js"></script>
+      <p class="contact-lead" data-reveal>参加コミュニティ、LT登壇・ブース出展、運営協力、協賛、取材などについてのご相談はこちらから。</p>
+
+      <form class="contact-form" id="contactForm" data-reveal>
+        <div class="field">
+          <label for="contactName">お名前</label>
+          <input type="text" id="contactName" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="contactEmail">メールアドレス</label>
+          <input type="email" id="contactEmail" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="field field-wide">
+          <label for="contactSubject">お問い合わせ種別</label>
+          <select id="contactSubject" name="subject" required>
+            <option value="">選択してください</option>
+            <option value="参加コミュニティについて">参加コミュニティについて</option>
+            <option value="LT登壇・ブース出展について">LT登壇・ブース出展について</option>
+            <option value="協賛について">協賛について</option>
+            <option value="運営協力について">運営協力について</option>
+            <option value="取材・広報について">取材・広報について</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div class="field field-wide">
+          <label for="contactMessage">お問い合わせ内容</label>
+          <textarea id="contactMessage" name="message" rows="7" required></textarea>
+        </div>
+
+        <div class="field field-wide">
+          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+        </div>
+
+        <div class="field field-wide form-foot">
+          <p class="form-note">送信ボタンを押すと、入力内容が運営宛に送信されます。</p>
+          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+          <button class="btn contact-submit" type="submit">送信する</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- =============================================
+     フッター
+============================================= -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/logo.svg" alt="テック無尽">
+      <p class="footer-tagline">山梨ITコミュニティ合同イベント</p>
+      <p class="footer-date">2026.11.22 SUN ／ 山梨大学 甲府キャンパス</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <h2>CONTENTS</h2>
+      <ul>
+        <li><a href="#about">テック無尽とは</a></li>
+        <li><a href="#outline">開催概要</a></li>
+        <li><a href="#sessions">コンテンツ</a></li>
+        <li><a href="#timetable">タイムテーブル</a></li>
+        <li><a href="#communities">参加コミュニティ</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#sponsors">協賛</a></li>
+        <li><a href="#team">運営体制</a></li>
+        <li><a href="#coc">行動規範</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-links">
+      <h2>FOLLOW</h2>
+      <ul>
+        <li><a href="https://www.facebook.com/techmujin" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href="https://www.instagram.com/techmujin/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://note.com/techmujin/m/m61bd7c72cd8c" target="_blank" rel="noopener noreferrer">note（運営ブログ）</a></li>
+        <li><a href="https://techmujin.connpass.com/" target="_blank" rel="noopener noreferrer">connpass</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="wrap">
+      <p class="footer-org">主催：テック無尽</p>
+      <p class="footer-copy">&copy; TECH MUJIN</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
