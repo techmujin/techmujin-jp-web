@@ -3,9 +3,10 @@
 
    方針:
    - 白基調・明るい配色。文字の背後に模様を敷かない（可読性優先）
-   - ブランドのマゼンタ→紫→青は、数字・ボタン・罫などのアクセントに限定して使う
+   - ブランドのマゼンタ→紫→青は、日付・ボタン・罫などのアクセントに限定して使う
    - セクション見出しはセンター揃え、内容は角丸カードで整理する
-   - T1/T2/T3 のトラックカラーはタイムテーブルと会場構成で共通
+   - ステージ／ブース／コミュニケーションスペースの色は
+     タイムテーブルの列と会場構成のカードで共通（--t1 / --t2 / --t3）
 
    目次:
     1. トークン
@@ -20,7 +21,7 @@
    10. 05 参加コミュニティ
    11. 06 アクセス
    12. 07 協賛
-   13. 08 運営体制
+   13. 08 スタッフ
    14. 09 行動規範
    15. 10 お問い合わせ
    16. フッター
@@ -167,7 +168,7 @@ a { color: inherit; text-decoration: none; }
 .section-coc { background: var(--bg); }
 
 .section-outline,
-.section-team { background: var(--bg-tint); }
+.section-staff { background: var(--bg-tint); }
 
 .section-timetable,
 .section-access,
@@ -214,17 +215,6 @@ a { color: inherit; text-decoration: none; }
 .sec-head {
   margin-bottom: clamp(32px, 5vw, 56px);
   text-align: center;
-}
-.sec-num {
-  font-family: var(--f-en);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 6px;
 }
 .sec-title {
   font-size: var(--fs-h2);
@@ -570,19 +560,13 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .concept:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.concept-no {
-  display: block;
-  margin-bottom: 10px;
-  font-family: var(--f-en);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.concept h3 {
+  font-size: 1.0625rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  padding-left: 12px;
+  border-left: 3px solid var(--violet);
 }
-.concept h3 { font-size: 1.0625rem; letter-spacing: 0.06em; margin-bottom: 8px; }
 .concept p { font-size: var(--fs-sm); line-height: 1.9; color: var(--muted); }
 
 
@@ -638,39 +622,25 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .session:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.session[data-track="t1"] { --track-color: var(--t1); }
-.session[data-track="t2"] { --track-color: var(--t2); }
-.session[data-track="t3"] { --track-color: var(--t3); }
-.session-no {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  background: color-mix(in srgb, var(--track-color) 12%, transparent);
-  color: var(--track-color);
-  font-family: var(--f-en);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
 .session h3 {
   font-size: var(--fs-h3);
   letter-spacing: 0.05em;
   margin-bottom: 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--violet);
 }
 /* 幅の狭いカード内では、文節折り返しだと行末が不揃いになるため既定の折り返しにする */
 .session p { font-size: var(--fs-sm); line-height: 1.95; color: var(--ink-soft); }
 .session-note { margin-top: 14px !important; }
+/* 折り返しても矢印が本文から離れないよう、インラインで続ける */
 .session-note a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-weight: 700;
   color: var(--violet);
-  transition: gap 0.25s var(--ease);
+  border-bottom: 1px solid rgba(107, 63, 181, 0.3);
+  transition: border-color 0.25s var(--ease);
 }
-.session-note a::after { content: "→"; font-family: var(--f-en); }
-.session-note a:hover { gap: 10px; }
+.session-note a::after { content: " →"; font-family: var(--f-en); white-space: nowrap; }
+.session-note a:hover { border-bottom-color: var(--violet); }
 
 
 /* =============================================
@@ -697,14 +667,13 @@ a { color: inherit; text-decoration: none; }
 .track-legend li[data-track="t1"] { --track-color: var(--t1); }
 .track-legend li[data-track="t2"] { --track-color: var(--t2); }
 .track-legend li[data-track="t3"] { --track-color: var(--t3); }
-.track-legend b {
-  padding: 2px 8px;
-  border-radius: 100px;
-  background: color-mix(in srgb, var(--track-color) 14%, transparent);
-  color: var(--track-color);
-  font-family: var(--f-en);
-  font-size: var(--fs-xs);
-  letter-spacing: 0.1em;
+/* 表の列と対応させるための色の丸 */
+.track-legend li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--track-color);
 }
 .track-legend span { font-size: var(--fs-xs); font-weight: 400; color: var(--muted); }
 
@@ -892,8 +861,19 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   margin-bottom: clamp(48px, 7vw, 80px);
 }
-.access-photo { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
-.access-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.access-map {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-tint);
+}
+.access-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 .access-venue { font-size: var(--fs-h3); line-height: 1.6; margin-bottom: 12px; }
 .access-addr { font-size: var(--fs-sm); color: var(--ink-soft); margin-bottom: 20px; }
@@ -940,14 +920,6 @@ a { color: inherit; text-decoration: none; }
 .zone[data-track="t1"] { --track-color: var(--t1); }
 .zone[data-track="t2"] { --track-color: var(--t2); }
 .zone[data-track="t3"] { --track-color: var(--t3); }
-.zone-id {
-  font-family: var(--f-en);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--track-color);
-  margin-bottom: 8px;
-}
 .zone h4 { font-size: 1.0625rem; letter-spacing: 0.05em; margin-bottom: 4px; }
 .zone-place { font-size: var(--fs-xs); color: var(--muted); margin-bottom: 10px; }
 .zone-desc { font-size: var(--fs-sm); line-height: 1.9; color: var(--ink-soft); }
@@ -1005,7 +977,7 @@ a { color: inherit; text-decoration: none; }
 
 
 /* =============================================
-  13. 08 運営体制
+  13. 08 スタッフ
 ============================================= */
 .team-lead {
   max-width: var(--wrap-text);
@@ -1014,23 +986,38 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
   line-height: 2;
 }
-.team-list {
+.staff-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-  gap: clamp(12px, 1.6vw, 16px);
+  grid-template-columns: repeat(auto-fill, minmax(min(130px, 100%), 1fr));
+  gap: clamp(16px, 2.4vw, 28px) clamp(10px, 1.6vw, 16px);
 }
-.member {
+.staff {
   display: grid;
-  gap: 4px;
-  padding: 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  justify-items: center;
+  gap: 10px;
   text-align: center;
 }
-.member-role { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.14em; color: var(--violet); }
-.member-name { font-size: 1.0625rem; font-weight: 900; letter-spacing: 0.1em; }
+/* アイコン画像が入るまでの仮アバター（img に差し替え可能なサイズ・形） */
+.staff-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #efeaf8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b3fb5' fill-opacity='.42'%3E%3Cpath d='M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5c0-3-4-5.5-9-5.5Z'/%3E%3C/svg%3E");
+  background-size: 60%;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--line);
+}
+.staff-handle {
+  font-family: var(--f-en);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
 .team-links {
   max-width: var(--wrap-text);
   margin: clamp(24px, 3.4vw, 34px) auto 0;
