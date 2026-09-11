@@ -1,7 +1,6 @@
 /* =============================================
    TECH MUJIN — style.css
-   準備フェーズ用スタイルシート
-   公開フェーズで全体的なビジュアル強化を検討
+   本番イベントページ用スタイルシート
 
    目次:
    1. CSS 変数
@@ -9,13 +8,20 @@
    3. レイアウト共通
    4. タイポグラフィ
    5. ヘッダー
-   6. 導入セクション
-   7. テック無尽とはセクション
-   8. 募集セクション（コミュニティ・スタッフ）
-   9. お問い合わせセクション
-  10. フッター
-  11. ユーティリティ
-  12. レスポンシブ
+   6. ヒーロー
+   7. テック無尽とは（コンセプト）
+   8. イベント概要（テーブル）
+   9. コンテンツ紹介（カードグリッド）
+  10. タイムテーブル（トラック表）
+  11. 参加コミュニティ
+  12. アクセス（会場構成）
+  13. 協賛について
+  14. 運営体制
+  15. 行動規範
+  16. お問い合わせ
+  17. フッター
+  18. ユーティリティ
+  19. レスポンシブ
 ============================================= */
 
 
@@ -155,6 +161,11 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.01em;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
 /* =============================================
    3. レイアウト共通
 ============================================= */
@@ -229,6 +240,52 @@ section:nth-child(even) {
   background-color: var(--color-primary);
 }
 
+/* ボタン（共通） */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-7);
+  font-size: var(--font-size-base);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  text-decoration: none;
+  border: 2px solid transparent;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #ffffff;
+  text-decoration: none;
+}
+.btn-primary:active {
+  background-color: #550040;
+  border-color: #550040;
+}
+
 
 /* =============================================
    5. ヘッダー
@@ -299,6 +356,7 @@ section:nth-child(even) {
 .nav-list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-1);
 }
 .nav-link {
@@ -365,7 +423,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-   6. 導入セクション
+   6. ヒーロー
 ============================================= */
 .section-intro {
   background-image: url('images/bg.jpg');
@@ -401,22 +459,6 @@ section:nth-child(even) {
   position: relative;
   z-index: 2;
   text-align: center;
-}
-
-/* 準備中バッジ */
-.phase-badge {
-  display: inline-block;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 100px;
-  padding: var(--space-1) var(--space-4);
-  margin-bottom: var(--space-5);
-  text-transform: uppercase;
 }
 
 /* h1 タイトル */
@@ -461,7 +503,9 @@ section:nth-child(even) {
   text-align: center;
 }
 .event-meta-date,
-.event-meta-venue {
+.event-meta-time,
+.event-meta-venue,
+.event-meta-fee {
   font-size: var(--font-size-lg);
   color: rgba(255, 255, 255, 0.95);
   font-weight: 500;
@@ -482,6 +526,10 @@ section:nth-child(even) {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
 }
+.event-meta-fee {
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.85);
+}
 
 /* 注記 */
 .intro-note {
@@ -498,75 +546,357 @@ section:nth-child(even) {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.intro-actions {
+  margin-top: var(--space-6);
+}
+.intro-actions .btn {
+  min-width: 240px;
+}
+
+.intro-sns {
+  margin-top: var(--space-5);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.intro-sns a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-inline: var(--space-2);
+}
+.intro-sns a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 
 /* =============================================
-   7. テック無尽とはセクション
+   7. テック無尽とは（コンセプト）
 ============================================= */
 .section-about {
   background-color: var(--color-bg-white);
 }
 
+.concept-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.concept-item {
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+}
+.concept-term {
+  display: block;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+.concept-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
 
 /* =============================================
-   8. 募集セクション
+   8. イベント概要（テーブル）
 ============================================= */
-.section-recruit {
+.section-overview {
   /* 背景は交互ルールで自動適用 */
 }
 
-/* ボタン */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3) var(--space-7);
-  font-size: var(--font-size-base);
-  font-family: var(--font-body);
-  font-weight: 600;
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--radius-md);
-  cursor: pointer;
-  transition:
-    background-color var(--transition-base),
-    color var(--transition-base),
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
-  text-decoration: none;
-  border: 2px solid transparent;
-  line-height: 1.5;
-  margin-top: var(--space-5);
-  letter-spacing: 0.04em;
-}
-.btn:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus);
-}
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.65;
 }
 
-.btn-primary {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
+.info-table {
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
-.btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  color: #ffffff;
-  text-decoration: none;
+.info-table th,
+.info-table td {
+  padding: var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+  line-height: var(--line-height-base);
+  vertical-align: top;
 }
-.btn-primary:active {
-  background-color: #550040;
-  border-color: #550040;
+.info-table tr:last-child th,
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+.info-table th[scope="row"] {
+  width: 8em;
+  white-space: nowrap;
+  color: var(--color-primary);
+  font-weight: 700;
+  background-color: var(--color-primary-light);
+}
+.info-table .table-note {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.overview-cta {
+  margin-top: var(--space-6);
 }
 
 
 /* =============================================
-   9. お問い合わせセクション
+   9. コンテンツ紹介（カードグリッド）
+============================================= */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+.content-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.content-card h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+}
+.content-card p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+.content-card-link {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+.content-note {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+
+/* =============================================
+  10. タイムテーブル（トラック表）
+============================================= */
+.info-table--tracks {
+  min-width: 720px;
+}
+.info-table--tracks th[scope="col"] {
+  padding: var(--space-4);
+  background-color: var(--color-text);
+  color: #ffffff;
+  font-size: var(--font-size-sm);
+  text-align: left;
+  white-space: nowrap;
+}
+.info-table--tracks th[scope="row"] {
+  width: 5.5em;
+}
+.info-table--tracks td {
+  font-size: var(--font-size-sm);
+}
+
+.table-caveat {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+
+/* =============================================
+  11. 参加コミュニティ
+============================================= */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+.community-card a {
+  display: block;
+  padding: var(--space-4);
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), color var(--transition-base);
+}
+.community-card a:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+
+/* =============================================
+  12. アクセス（会場構成）
+============================================= */
+.section-access {
+  /* 背景は交互ルールで自動適用 */
+}
+
+.access-zone-heading {
+  margin-top: var(--space-7);
+  font-size: var(--font-size-xl);
+}
+
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+.zone-card {
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-bg-white);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.zone-card h4 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-base);
+  color: var(--color-primary);
+}
+.zone-card p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
+
+/* =============================================
+  13. 協賛について
+============================================= */
+.section-sponsor {
+  /* 背景は交互ルールで自動適用 */
+}
+
+.sponsor-tier {
+  margin-top: var(--space-7);
+}
+.sponsor-tier:first-of-type {
+  margin-top: var(--space-6);
+}
+.sponsor-tier-heading {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+.sponsor-logo-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+.sponsor-logo-grid--lg {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.sponsor-logo-grid--md {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.sponsor-logo-grid--sm {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+}
+.sponsor-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-bg-section);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-light);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+}
+
+
+/* =============================================
+  14. 運営体制
+============================================= */
+.section-team {
+  /* 背景は交互ルールで自動適用 */
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+}
+.team-card {
+  padding: var(--space-4);
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.team-role {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+.team-name {
+  display: block;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.team-note {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+}
+
+
+/* =============================================
+  15. 行動規範
+============================================= */
+.section-coc {
+  background-color: var(--color-bg-white);
+}
+
+.coc-block {
+  margin-top: var(--space-6);
+}
+.coc-block h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+}
+.coc-block p {
+  margin: 0;
+  color: var(--color-text);
+  line-height: var(--line-height-base);
+}
+
+
+/* =============================================
+  16. お問い合わせ
 ============================================= */
 .section-contact {
-  background-color: var(--color-bg-white);
+  /* 背景は交互ルールで自動適用 */
 }
 
 .contact-form {
@@ -656,23 +986,57 @@ section:nth-child(even) {
 
 
 /* =============================================
-  10. フッター
+  17. フッター
 ============================================= */
 .site-footer {
   background-color: var(--color-text);
   color: rgba(255, 255, 255, 0.7);
-  padding-block: var(--space-7);
-  text-align: center;
+  padding-block: var(--space-8);
   margin-top: 0;
 }
-.footer-inner {
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: var(--space-7);
+}
+
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: var(--space-3);
+}
+.footer-tagline,
+.footer-organizer {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-col-heading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-link-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
+.footer-link-list a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: var(--font-size-sm);
+}
+.footer-link-list a:hover {
+  color: #ffffff;
+}
+
 .footer-social {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-3);
 }
 .social-link {
@@ -684,7 +1048,7 @@ section:nth-child(even) {
   font-size: var(--font-size-sm);
   transition: color 0.3s ease;
   padding: var(--space-2);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 .social-link:hover {
   color: rgba(255, 255, 255, 0.9);
@@ -695,6 +1059,16 @@ section:nth-child(even) {
   height: 20px;
   flex-shrink: 0;
 }
+
+.footer-bottom {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-x);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
 .footer-copy {
   margin: 0;
   font-size: var(--font-size-xs);
@@ -704,7 +1078,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-  11. ユーティリティ
+  18. ユーティリティ
 ============================================= */
 /* スクリーンリーダー専用テキスト */
 .visually-hidden {
@@ -721,7 +1095,7 @@ section:nth-child(even) {
 
 
 /* =============================================
-  12. レスポンシブ
+  19. レスポンシブ
 ============================================= */
 
 /* タブレット以下（768px 未満） */
@@ -751,7 +1125,8 @@ section:nth-child(even) {
     transition: max-height 0.3s ease;
   }
   .global-nav.is-open {
-    max-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
   }
   .nav-list {
     flex-direction: column;
@@ -774,9 +1149,6 @@ section:nth-child(even) {
     flex-wrap: wrap;
   }
 
-  /* ロゴサイズ調整 */
-  /* ヘッダーのロゴは削除済み */
-
   /* 導入部 */
   .section-intro {
     min-height: 50vh;
@@ -793,16 +1165,36 @@ section:nth-child(even) {
     text-align: center;
     justify-content: center;
   }
+  .intro-actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
 
   .contact-submit {
     justify-self: stretch;
+  }
+
+  /* フッター：1カラムに */
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  .footer-col-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-link-list {
+    align-items: center;
+  }
+  .footer-social {
+    justify-content: center;
   }
 }
 
 /* スマホ（480px 未満） */
 @media (max-width: 479px) {
-  /* ヘッダーのロゴは削除済み */
-
   /* 導入部をコンパクトに */
   .section-intro {
     min-height: 40vh;
@@ -819,7 +1211,9 @@ section:nth-child(even) {
   }
 
   .event-meta-date,
-  .event-meta-venue {
+  .event-meta-time,
+  .event-meta-venue,
+  .event-meta-fee {
     font-size: var(--font-size-base);
   }
 
