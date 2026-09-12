@@ -1327,7 +1327,16 @@ a { color: inherit; text-decoration: none; }
   .nav-link::after { display: none; }
   .nav-cta { margin-top: 26px; padding: 15px 30px; font-size: var(--fs-body); }
 
+  /* 1カラムになると左寄せのテキストが左に偏って見えるため、
+     写真の上に来るコピー部分は中央揃えにする */
   .hero-inner { grid-template-columns: 1fr; }
+  .hero-copy { text-align: center; }
+  .hero-eyebrow { margin-inline: auto; }
+  .hero-logo { display: flex; justify-content: center; }
+  .hero-date { justify-content: center; }
+  .hero-lead { margin-inline: auto; }
+  .hero-facts { justify-content: center; }
+  .hero-actions { justify-content: center; }
   .hero-photo { order: 2; }
   .access-grid { grid-template-columns: 1fr; }
 
