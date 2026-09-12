@@ -20,6 +20,7 @@
     9. 04 タイムテーブル
    10. 05 参加コミュニティ
    11. 06 アクセス
+   11-2. FAQ
    12. 07 協賛
    13. 08 スタッフ
    14. 09 行動規範
@@ -165,6 +166,7 @@ a { color: inherit; text-decoration: none; }
 .section-sessions,
 .section-communities,
 .section-sponsors,
+.section-faq,
 .section-coc { background: var(--bg); }
 
 .section-outline,
@@ -843,11 +845,11 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.6;
   letter-spacing: 0.04em;
 }
-.com-host {
-  font-family: var(--f-en);
-  font-size: 0.6875rem;
+.com-desc {
+  margin-top: 4px;
+  font-size: var(--fs-xs);
+  line-height: 1.8;
   color: var(--muted);
-  overflow-wrap: anywhere;
 }
 
 
@@ -923,6 +925,65 @@ a { color: inherit; text-decoration: none; }
 .zone h4 { font-size: 1.0625rem; letter-spacing: 0.05em; margin-bottom: 4px; }
 .zone-place { font-size: var(--fs-xs); color: var(--muted); margin-bottom: 10px; }
 .zone-desc { font-size: var(--fs-sm); line-height: 1.9; color: var(--ink-soft); }
+
+
+/* =============================================
+  11-2. FAQ
+  JSなしで開閉できるよう details/summary で組む
+============================================= */
+.faq-list {
+  max-width: 880px;
+  margin-inline: auto;
+  display: grid;
+  gap: 10px;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.faq-item summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(16px, 2.2vw, 22px) clamp(18px, 2.4vw, 26px);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.2s var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--violet); }
+/* 開閉インジケーター（＋ / −） */
+.faq-item summary::after {
+  content: "";
+  flex: 0 0 18px;
+  height: 18px;
+  margin-left: auto;
+  margin-top: 4px;
+  background: var(--violet);
+  transition: transform 0.3s var(--ease);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 5h2v14h-2z'/%3E%3Cpath d='M5 11h14v2H5z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 5h2v14h-2z'/%3E%3Cpath d='M5 11h14v2H5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-body {
+  margin-inline: clamp(18px, 2.4vw, 26px);
+  padding-block: 16px clamp(18px, 2.4vw, 26px);
+  border-top: 1px solid var(--line-soft);
+}
+.faq-body p {
+  font-size: var(--fs-sm);
+  line-height: 2;
+  color: var(--ink-soft);
+}
+.faq-body p + p { margin-top: 12px; }
+.faq-body a { font-weight: 700; color: var(--violet); border-bottom: 1px solid currentColor; }
 
 
 /* =============================================
@@ -1217,7 +1278,7 @@ a { color: inherit; text-decoration: none; }
 /* =============================================
   17. レスポンシブ
 ============================================= */
-@media (max-width: 1040px) {
+@media (max-width: 1180px) {
   .nav-list { gap: 2px; }
   .nav-link { font-size: 0.75rem; }
 }
