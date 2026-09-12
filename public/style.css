@@ -1036,6 +1036,25 @@ a { color: inherit; text-decoration: none; }
 .tier-logos-lg .logo-slot { aspect-ratio: 16 / 6; }
 .tier-logos-sm .logo-slot { aspect-ratio: 16 / 9; }
 
+/* ロゴが入った枠。空き枠の破線に対して実線にし、リンクとして振る舞う */
+.logo-slot-filled {
+  padding: clamp(12px, 1.6vw, 18px);
+  border-style: solid;
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.logo-slot-filled img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.logo-slot-filled:hover {
+  transform: translateY(-3px);
+  border-color: rgba(107, 63, 181, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
 
 /* =============================================
   13. 08 スタッフ
