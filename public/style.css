@@ -1067,7 +1067,7 @@ a { color: inherit; text-decoration: none; }
 }
 .staff-link:hover { transform: translateY(-3px); }
 .staff-link:hover .staff-avatar { border-color: var(--violet); }
-.staff-link:hover .staff-handle { color: var(--violet); }
+.staff-link:hover .staff-name { color: var(--violet); }
 /* アイコン画像が入るまでの仮アバター（img に差し替え可能なサイズ・形） */
 .staff-avatar {
   width: 76px;
@@ -1082,11 +1082,11 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   transition: border-color 0.25s var(--ease);
 }
-.staff-handle {
-  font-family: var(--f-en);
+.staff-name {
+  font-family: var(--f-jp);
   font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--ink-soft);
   overflow-wrap: anywhere;
   transition: color 0.25s var(--ease);
