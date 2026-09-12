@@ -678,10 +678,21 @@
 
       <p class="team-lead" data-reveal>テック無尽は、山梨県内のITコミュニティ有志による団体「テック無尽」が運営しています。</p>
 
-      <!-- TODO: アイコン画像とハンドルネームを差し替える。
-           span.staff-avatar は <img class="staff-avatar" src="images/staff/xxx.jpg" alt=""> に置き換え可能 -->
+      <!-- TODO: 残りのスタッフもconnpassのプロフィールに差し替える。1件目（@yuukis）が実装例。
+           未差し替えの項目は以下のパターンに置き換える:
+           <li class="staff" data-reveal>
+             <a class="staff-link" href="https://connpass.com/user/<ユーザー名>/" target="_blank" rel="noopener noreferrer">
+               <img class="staff-avatar" src="<プロフィールアイコンのURL>" alt="<表示名>">
+               <span class="staff-handle">@<ユーザー名></span>
+             </a>
+           </li> -->
       <ul class="staff-grid">
-        <li class="staff" data-reveal><span class="staff-avatar" aria-hidden="true"></span><span class="staff-handle">@handle01</span></li>
+        <li class="staff" data-reveal>
+          <a class="staff-link" href="https://connpass.com/user/yuukis/" target="_blank" rel="noopener noreferrer">
+            <img class="staff-avatar" src="https://media.connpass.com/thumbs/66/84/6684a0b207ef5f1212dd09708e3f1475.png" alt="しみず ゆうき">
+            <span class="staff-handle">@yuukis</span>
+          </a>
+        </li>
         <li class="staff" data-reveal><span class="staff-avatar" aria-hidden="true"></span><span class="staff-handle">@handle02</span></li>
         <li class="staff" data-reveal><span class="staff-avatar" aria-hidden="true"></span><span class="staff-handle">@handle03</span></li>
         <li class="staff" data-reveal><span class="staff-avatar" aria-hidden="true"></span><span class="staff-handle">@handle04</span></li>
