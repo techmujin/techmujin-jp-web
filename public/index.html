@@ -278,91 +278,84 @@
         <p class="sec-en">TIMETABLE</p>
       </header>
 
-      <ul class="track-legend" data-reveal>
-        <li data-track="t1">ステージ<span>ホール前方</span></li>
-        <li data-track="t2">ブース<span>ホール内</span></li>
-        <li data-track="t3">コミュニケーションスペース<span>ホール外</span></li>
-      </ul>
-
-      <p class="schedule-hint" aria-hidden="true">横にスクロールできます →</p>
+      <p class="tl-zones" data-reveal>
+        <b>ブース</b>（ホール内）と<b>コミュニケーションスペース</b>（ホール外）は、9:30から16:30まで終日開放しています。ステージの進行中も自由に出入りできます。
+      </p>
 
       <!-- TODO: 確定次第、実際のタイムテーブルに差し替える -->
-      <div class="schedule-scroll" data-reveal>
-        <table class="schedule">
-          <thead>
-            <tr>
-              <th scope="col" class="col-time">時刻</th>
-              <th scope="col" data-track="t1">ステージ</th>
-              <th scope="col" data-track="t2">ブース</th>
-              <th scope="col" data-track="t3">コミュニケーションスペース</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">9:30</th>
-              <td>開場・受付<small>QRコード配布</small></td>
-              <td>ブース開設</td>
-              <td>開放</td>
-            </tr>
-            <tr>
-              <th scope="row">10:00</th>
-              <td>オリエンテーション<small>10分</small></td>
-              <td class="cell-cont"><span>常設</span></td>
-              <td class="cell-cont"><span>終日開放</span></td>
-            </tr>
-            <tr class="is-main">
-              <th scope="row">10:15</th>
-              <td>コミュニティ紹介<small>100分 ／ 13団体</small></td>
-              <td class="cell-cont"><span>常設</span></td>
-              <td class="cell-cont"><span>開放</span></td>
-            </tr>
-            <tr>
-              <th scope="row">11:55</th>
-              <td>スポンサーLT<small>25分</small></td>
-              <td class="cell-cont"><span>常設</span></td>
-              <td class="cell-cont"><span>開放</span></td>
-            </tr>
-            <tr class="is-break">
-              <th scope="row">12:20</th>
-              <td>回遊タイム＋昼休憩<small>90分 ／ ステージ休止</small></td>
-              <td class="cell-peak"><span>ピーク</span></td>
-              <td class="cell-peak"><span>ピーク（飲食・歓談）</span></td>
-            </tr>
-            <tr>
-              <th scope="row">13:50</th>
-              <td>コミュニティLT<small>85分</small></td>
-              <td class="cell-cont"><span>常設</span></td>
-              <td class="cell-cont"><span>開放</span></td>
-            </tr>
-            <tr>
-              <th scope="row">15:25</th>
-              <td>代読LT ＆ テック無尽ラジオ<small>60分</small></td>
-              <td class="cell-cont"><span>常設</span></td>
-              <td class="cell-cont"><span>開放</span></td>
-            </tr>
-            <tr>
-              <th scope="row">16:30</th>
-              <td>クロージング<small>25分</small></td>
-              <td>撤収</td>
-              <td>撤収</td>
-            </tr>
-            <tr>
-              <th scope="row">17:00</th>
-              <td>イベントクローズ</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr class="is-after">
-              <th scope="row">18:30</th>
-              <td>懇親会<small>任意参加 ／ 別会場</small></td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <ol class="timeline">
+        <li class="tl-item" data-reveal style="--min:30">
+          <p class="tl-time"><time datetime="2026-11-22T09:30">9:30</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">開場・受付</h3>
+            <p class="tl-desc">受付でQRコードをお渡しします</p>
+          </div>
+        </li>
+        <li class="tl-item" data-reveal style="--min:15">
+          <p class="tl-time"><time datetime="2026-11-22T10:00">10:00</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">オリエンテーション<span class="tl-len">10分</span></h3>
+            <p class="tl-desc">イベントの趣旨と、当日の過ごし方のご案内</p>
+          </div>
+        </li>
+        <li class="tl-item tl-item-main" data-reveal style="--min:100">
+          <p class="tl-time"><time datetime="2026-11-22T10:15">10:15</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">コミュニティ紹介<span class="tl-len">100分</span></h3>
+            <p class="tl-desc">参加13団体が1枠5分で活動を紹介します。自分に合う場を探すための時間です。</p>
+          </div>
+        </li>
+        <li class="tl-item" data-reveal style="--min:25">
+          <p class="tl-time"><time datetime="2026-11-22T11:55">11:55</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">スポンサーLT<span class="tl-len">25分</span></h3>
+            <p class="tl-desc">協賛企業によるライトニングトーク</p>
+          </div>
+        </li>
+        <li class="tl-item tl-item-break" data-reveal style="--min:90">
+          <p class="tl-time"><time datetime="2026-11-22T12:20">12:20</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">回遊タイム・昼休憩<span class="tl-len">90分</span></h3>
+            <p class="tl-desc">ステージは休止。ブースと交流スペースが最もにぎわう時間帯です。</p>
+          </div>
+        </li>
+        <li class="tl-item" data-reveal style="--min:85">
+          <p class="tl-time"><time datetime="2026-11-22T13:50">13:50</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">コミュニティLT<span class="tl-len">85分</span></h3>
+            <p class="tl-desc">各コミュニティによるライトニングトーク</p>
+          </div>
+        </li>
+        <li class="tl-item" data-reveal style="--min:60">
+          <p class="tl-time"><time datetime="2026-11-22T15:25">15:25</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">代読LT ＆ テック無尽ラジオ<span class="tl-len">60分</span></h3>
+            <p class="tl-desc">参加者の投稿を司会が代読し、そのままゲストを交えた公開トークへ</p>
+          </div>
+        </li>
+        <li class="tl-item" data-reveal style="--min:25">
+          <p class="tl-time"><time datetime="2026-11-22T16:30">16:30</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">クロージング<span class="tl-len">25分</span></h3>
+            <p class="tl-desc">まとめと、各コミュニティの今後の予定のご案内</p>
+          </div>
+        </li>
+        <li class="tl-item tl-item-end" data-reveal style="--min:20">
+          <p class="tl-time"><time datetime="2026-11-22T17:00">17:00</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">イベントクローズ</h3>
+          </div>
+        </li>
+        <li class="tl-item tl-item-after" data-reveal style="--min:20">
+          <p class="tl-time"><time datetime="2026-11-22T18:30">18:30</time></p>
+          <div class="tl-body">
+            <h3 class="tl-title">懇親会</h3>
+            <p class="tl-desc">任意参加・別会場</p>
+          </div>
+        </li>
+      </ol>
 
-      <p class="schedule-note">※内容・時刻は変更になる場合があります。確定次第更新します。ホール外のコミュニケーションスペースは終日開放しており、ステージの進行中でも自由に出入りいただけます。</p>
+      <p class="schedule-note">※内容・時刻は変更になる場合があります。確定次第更新します。</p>
     </div>
   </section>
 
