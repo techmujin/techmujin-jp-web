@@ -57,9 +57,11 @@
   --t3: #2f86cf;
 
   /* 書体 */
-  --f-jp: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-          "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
-  --f-en: "Space Grotesk", "Zen Kaku Gothic New", sans-serif;
+  /* 和文は中立なNoto Sans JP。ロゴが幾何学的で主張が強いため、
+     本文側は性格を抑えて competing させない。数字と英字ラベルのみ Space Grotesk */
+  --f-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+          "Yu Gothic", Meiryo, sans-serif;
+  --f-en: "Space Grotesk", "Noto Sans JP", sans-serif;
 
   /* 可変タイポ */
   --fs-hero-date: clamp(2.4rem, 6vw, 3.9rem);
