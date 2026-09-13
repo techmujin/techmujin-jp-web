@@ -500,6 +500,10 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-sns a:hover { color: var(--violet); border-color: var(--violet); }
 
+/* 会場写真の上に、当日の様子のイラストを重ねて配置する。
+   写真だけでは伝わらない「当日どんな場になるか」を補う */
+.hero-visual { position: relative; }
+
 .hero-photo {
   position: relative;
   margin: 0;
@@ -507,15 +511,35 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
+
+.hero-illust {
+  position: relative;
+  /* 写真の下端に重ね、左右にはみ出させて単調な積み重ねに見えないようにする */
+  margin: -46px -24px 0 -52px;
+  padding: 14px 18px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.hero-illust img { width: 100%; }
+.hero-illust figcaption {
+  margin-top: 6px;
+  text-align: right;
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
 .hero-photo img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+/* イラストを下端に重ねるため、キャプションは上に置く */
 .hero-photo figcaption {
   position: absolute;
   left: 14px;
-  bottom: 14px;
+  top: 14px;
   padding: 7px 14px;
   border-radius: 100px;
   background: rgba(33, 29, 51, 0.78);
@@ -1380,7 +1404,9 @@ a { color: inherit; text-decoration: none; }
   .hero-lead { margin-inline: auto; }
   .hero-facts { justify-content: center; }
   .hero-actions { justify-content: center; }
-  .hero-photo { order: 2; }
+  .hero-visual { order: 2; }
+  /* 1カラムでは左右へのはみ出しをやめ、重なりも浅くする */
+  .hero-illust { margin: -28px 0 0; }
   .access-grid { grid-template-columns: 1fr; }
 
   .footer-inner { grid-template-columns: 1fr 1fr; }
