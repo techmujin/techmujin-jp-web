@@ -377,102 +377,116 @@
       </header>
 
       <p class="com-count" data-reveal><b>13</b>コミュニティが参加します</p>
+      <p class="com-note" data-reveal>「LT登壇」はステージでの発表、「ブース出展」は会場内での展示があることを示しています。</p>
 
-      <!-- TODO: 各コミュニティのロゴ画像が揃い次第、
-           span.com-logo を <img class="com-logo" src="images/communities/xxx.png" alt=""> に差し替える -->
-      <!-- TODO: 説明文は名称から推測した暫定版。各コミュニティに確認のうえ差し替える -->
+      <!-- 並び順・サムネイル・キーワード・参加企画・URLはNotionの
+           「参加コミュニティ調整」テーブルビューに準拠。
+           サムネイル未設定の4件（Houtou.pm / Kofu.rb / SORACOM UG 山梨 / スクラッチディ in 山梨）は
+           汎用アイコン generic.svg を表示している。
+           TODO: 説明文は名称とキーワードから起こした暫定版。各コミュニティに確認のうえ差し替える -->
       <ul class="com-grid">
         <li class="com-card" data-reveal>
-          <a href="https://ura-techmujin.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">裏</span>
-            <span class="com-name">裏テック無尽</span>
-            <span class="com-desc">テック無尽から生まれた、テーマを決めずに集まるゆるい会</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://kainokuni.org" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">甲</span>
-            <span class="com-name">甲斐国もくもく会</span>
-            <span class="com-desc">各自が持ち寄った作業や学習を、黙々と進めるもくもく会</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://shingenpy.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">Py</span>
-            <span class="com-name">Shingen.py</span>
-            <span class="com-desc">山梨のPythonコミュニティ。入門から実務利用まで</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://meetup.com/ja-JP/yamanashi-wordpress-meetup" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">WP</span>
-            <span class="com-name">Yamanashi WordPress Meetup</span>
-            <span class="com-desc">WordPressユーザーの集まり。サイト制作・運用の情報交換</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://kintonecafe-yamanashi.qloba.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">kC</span>
-            <span class="com-name">kintone Café 山梨</span>
-            <span class="com-desc">kintoneを使った業務改善の事例やノウハウを共有</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://soracom.jp/user-group" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">UG</span>
-            <span class="com-name">SORACOM UG 山梨</span>
-            <span class="com-desc">IoTプラットフォームSORACOMのユーザーグループ</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://ai-meetup.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">東</span>
-            <span class="com-name">東京-山梨 AI ミートアップ</span>
-            <span class="com-desc">東京と山梨をつなぐ、AIをテーマにした勉強会</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://aibase.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">AI</span>
-            <span class="com-name">AI BASE</span>
-            <span class="com-desc">AI・生成AIの活用をテーマにした集まり</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://scratch.itolab.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">ス</span>
-            <span class="com-name">スクラッチディ in 山梨</span>
-            <span class="com-desc">子ども向けのScratchプログラミングイベント</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://houtoupm.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">pm</span>
-            <span class="com-name">Houtou.pm</span>
-            <span class="com-desc">Perlを中心に、言語やツールの話をする集まり</span>
-          </a>
-        </li>
-        <li class="com-card" data-reveal>
-          <a href="https://kofurb.connpass.com" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">rb</span>
-            <span class="com-name">Kofu.rb</span>
-            <span class="com-desc">甲府のRubyコミュニティ。文法から実践まで</span>
-          </a>
-        </li>
-        <!-- TODO: 実URLに差し替える -->
-        <li class="com-card" data-reveal>
-          <a href="https://example.com/jaws-ug-yamanashi" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">JA</span>
+          <a href="https://jaws-ug-yamanashi.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/jaws-ug-yamanashi.png" alt="JAWS-UG山梨">
             <span class="com-name">JAWS-UG山梨</span>
             <span class="com-desc">AWSユーザーグループ（JAWS-UG）の山梨支部</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
           </a>
         </li>
-        <!-- TODO: 実URLに差し替える -->
         <li class="com-card" data-reveal>
-          <a href="https://example.com/coderdojo-kofu" target="_blank" rel="noopener noreferrer">
-            <span class="com-logo" aria-hidden="true">道</span>
+          <a href="https://shingenpy.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/shingenpy.png" alt="Shingen.py">
+            <span class="com-name">Shingen.py</span>
+            <span class="com-desc">山梨のPythonコミュニティ。入門から実務利用まで</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span><span class="com-tag com-tag-booth">ブース出展</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://houtoupm.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/generic.svg" alt="" aria-hidden="true">
+            <span class="com-name">Houtou.pm</span>
+            <span class="com-desc">Perlを中心に、言語やツールの話をする集まり</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://kofurb.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/generic.svg" alt="" aria-hidden="true">
+            <span class="com-name">Kofu.rb</span>
+            <span class="com-desc">甲府のRubyコミュニティ。文法から実践まで</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://aibase.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/aibase.png" alt="AI BASE">
+            <span class="com-name">AI BASE</span>
+            <span class="com-desc">AI・生成AIの活用をテーマにした集まり</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://ai-meetup.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/ai-meetup.png" alt="東京-山梨 AI ミートアップ">
+            <span class="com-name">東京-山梨 AI ミートアップ</span>
+            <span class="com-desc">東京と山梨をつなぐ、AIをテーマにした勉強会</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://www.meetup.com/ja-jp/yamanashi-wordpress-meetup/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/yamanashi-wordpress.png" alt="Yamanashi WordPress Meetup">
+            <span class="com-name">Yamanashi WordPress Meetup</span>
+            <span class="com-desc">WordPressユーザーの集まり。サイト制作・運用の情報交換</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://kintonecafe-yamanashi.qloba.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/kintone-cafe-yamanashi.png" alt="kintone Café 山梨">
+            <span class="com-name">kintone Café 山梨</span>
+            <span class="com-desc">kintoneを使った業務改善の事例やノウハウを共有</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span><span class="com-tag com-tag-booth">ブース出展</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://soracom.jp/user-group/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/generic.svg" alt="" aria-hidden="true">
+            <span class="com-name">SORACOM UG 山梨</span>
+            <span class="com-desc">IoTプラットフォームSORACOMのユーザーグループ</span>
+            <span class="com-tags"><span class="com-tag com-tag-booth">ブース出展</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://coderdojokofu.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/coderdojo-kofu.png" alt="コーダー道場甲府">
             <span class="com-name">コーダー道場甲府</span>
             <span class="com-desc">子どものためのプログラミング道場 CoderDojo</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://scratch.itolab.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/generic.svg" alt="" aria-hidden="true">
+            <span class="com-name">スクラッチディ in 山梨</span>
+            <span class="com-desc">子ども向けのScratchプログラミングイベント</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span><span class="com-tag com-tag-booth">ブース出展</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://kainokuni.org/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/kainokuni.png" alt="甲斐国もくもく会">
+            <span class="com-name">甲斐国もくもく会</span>
+            <span class="com-desc">各自が持ち寄った作業や学習を、黙々と進めるもくもく会</span>
+            <span class="com-tags"><span class="com-tag com-tag-booth">ブース出展</span></span>
+          </a>
+        </li>
+        <li class="com-card" data-reveal>
+          <a href="https://ura-techmujin.connpass.com/" target="_blank" rel="noopener noreferrer">
+            <img class="com-logo" src="images/communities/ura-techmujin.png" alt="裏テック無尽">
+            <span class="com-name">裏テック無尽</span>
+            <span class="com-desc">テック無尽から生まれたLT会。テーマを問わず気軽に話せる場</span>
+            <span class="com-tags"><span class="com-tag com-tag-lt">LT登壇</span></span>
           </a>
         </li>
       </ul>
