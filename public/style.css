@@ -513,12 +513,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* 写真と同じ幅・同じ角丸で、写真の上に置く。
-   下に余白を取り、写真と詰まって見えないようにする */
+   影は付けず、紫系に色を寄せたうえで少し透過させ、地の色に馴染ませる */
 .hero-illust {
   width: 100%;
   margin-bottom: clamp(16px, 2.2vw, 24px);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  opacity: 0.72;
 }
 .hero-photo img {
   width: 100%;
