@@ -512,14 +512,13 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--shadow-lg);
 }
 
-/* 枠は付けず、線を薄くして地の色に溶け込ませる。
-   写真の下に十分な余白を取り、主張させずに雰囲気だけを添える */
+/* 写真と同じ幅・同じ角丸で、写真の上に置く。
+   下に余白を取り、写真と詰まって見えないようにする */
 .hero-illust {
-  /* 左右のはみ出し分だけ列より広くする */
-  width: calc(100% + 96px);
-  max-width: none;
-  margin: clamp(26px, 3.4vw, 40px) -40px 0 -56px;
-  opacity: 0.4;
+  width: 100%;
+  margin-bottom: clamp(16px, 2.2vw, 24px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 .hero-photo img {
   width: 100%;
@@ -1395,8 +1394,7 @@ a { color: inherit; text-decoration: none; }
   .hero-facts { justify-content: center; }
   .hero-actions { justify-content: center; }
   .hero-visual { order: 2; }
-  /* 1カラムでは左右へのはみ出しをやめる */
-  .hero-illust { width: 100%; margin: clamp(20px, 3vw, 28px) 0 0; }
+  .hero-illust { margin-bottom: clamp(14px, 2.4vw, 20px); }
   .access-grid { grid-template-columns: 1fr; }
 
   .footer-inner { grid-template-columns: 1fr 1fr; }
