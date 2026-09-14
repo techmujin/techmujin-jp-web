@@ -383,17 +383,22 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-  align-items: center;
-  gap: clamp(32px, 5vw, 64px);
   max-width: var(--wrap);
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
+/* 左右カラムは上端・下端とも揃える。
+   背の低い左カラムは SNS 行を下端に寄せて、右の写真と底辺を合わせる */
+.hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(32px, 5vw, 64px);
+}
+.hero-copy { display: flex; flex-direction: column; }
+
 .hero-eyebrow {
-  display: inline-block;
+  align-self: flex-start;
   margin-bottom: 20px;
   padding: 7px 16px;
   border-radius: 100px;
@@ -456,17 +461,32 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
-.hero-facts {
+/* 開催情報＋申込ボタンの帯。
+   左右2カラムの下に全幅で敷くことで、右下に空いていた余白を埋めて構図を締める */
+.hero-bar {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 12px clamp(20px, 3vw, 36px);
-  padding: 18px 22px;
-  margin-bottom: clamp(20px, 2.6vw, 26px);
+  gap: 18px clamp(24px, 3.5vw, 40px);
+  margin-top: clamp(32px, 4.5vw, 52px);
+  padding: 20px clamp(20px, 2.6vw, 28px);
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
+
+.hero-facts {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 12px 0;
+}
+/* 項目どうしは縦罫で区切る */
+/* 均等割りにしつつ、値が折り返さない幅は必ず確保する */
+.hero-facts > div { flex: 1 1 auto; min-width: max-content; padding-inline: clamp(14px, 2.2vw, 28px); }
+.hero-facts > div:first-child { padding-left: 0; }
+.hero-facts > div + div { border-left: 1px solid var(--line-soft); }
 .hero-facts dt {
   margin-bottom: 2px;
   font-size: var(--fs-label);
@@ -486,13 +506,15 @@ a { color: inherit; text-decoration: none; }
   color: var(--muted);
 }
 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px clamp(20px, 3vw, 32px);
+/* 左カラムの下端に寄せて右の写真と底辺を合わせる。
+   離れた位置に置くので、細い罫で区切って意図的な配置に見せる */
+.hero-sns {
+  margin-top: auto;
+  padding-top: clamp(16px, 2.4vw, 24px);
+  border-top: 1px solid var(--line-soft);
+  font-size: var(--fs-sm);
+  color: var(--muted);
 }
-.hero-sns { font-size: var(--fs-sm); color: var(--muted); }
 .hero-sns a {
   margin-right: 12px;
   color: var(--ink-soft);
@@ -1386,16 +1408,29 @@ a { color: inherit; text-decoration: none; }
   .nav-cta { margin-top: 26px; padding: 15px 30px; font-size: var(--fs-body); }
 
   /* 1カラムになると左寄せのテキストが左に偏って見えるため、
-     写真の上に来るコピー部分は中央揃えにする */
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-copy { text-align: center; }
-  .hero-eyebrow { margin-inline: auto; }
+     写真の上に来るコピー部分は中央揃えにする。
+     また、申込ボタンが写真より下に埋もれないよう
+     コピー → 開催情報の帯 → 写真 の順に並べ替える */
+  .hero-inner { display: flex; flex-direction: column; }
+  .hero-main { display: contents; }
+  .hero-copy { order: 1; text-align: center; }
+  .hero-bar { order: 2; margin-top: clamp(26px, 5vw, 34px); flex-direction: column; text-align: center; }
+  .hero-visual { order: 3; margin-top: clamp(26px, 5vw, 34px); }
+  .hero-eyebrow { align-self: center; margin-inline: auto; }
   .hero-logo { display: flex; justify-content: center; }
   .hero-date { justify-content: center; }
   .hero-lead { margin-inline: auto; }
-  .hero-facts { justify-content: center; }
-  .hero-actions { justify-content: center; }
-  .hero-visual { order: 2; }
+  .hero-sns { margin-top: 0; border-top: 0; padding-top: 0; text-align: center; }
+  /* 折り返しで半端な並びになるのを避け、会場を1行使って2段に組む */
+  .hero-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 12px;
+    width: 100%;
+  }
+  .hero-facts > div { min-width: 0; padding-inline: 0; }
+  .hero-facts > div:first-child { grid-column: 1 / -1; }
+  .hero-facts > div + div { border-left: 0; }
   .hero-illust { margin-bottom: clamp(14px, 2.4vw, 20px); }
   .access-grid { grid-template-columns: 1fr; }
 
@@ -1404,8 +1439,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 680px) {
-  .hero-actions { flex-direction: column; align-items: stretch; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-bar { align-items: stretch; }
+  .hero-bar .btn { width: 100%; justify-content: center; }
   .hero-sns { text-align: center; }
 
   .outline-row { grid-template-columns: 1fr; gap: 2px; }
