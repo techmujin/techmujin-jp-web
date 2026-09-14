@@ -446,9 +446,13 @@ a { color: inherit; text-decoration: none; }
   background-clip: text;
   color: transparent;
 }
-/* 「11.22」とベースラインを揃える（flex の baseline 揃えに任せる） */
+/* 文字ではなくカプセル自体の下端を「11.22」のベースラインに合わせる。
+   baseline 揃えだと中の文字のベースラインが基準になるため、
+   下パディングとディセンダの分だけ持ち上げる */
 .hero-date-dow {
-  padding: 5px 12px;
+  --pad-y: 5px;
+  padding: var(--pad-y) 12px;
+  transform: translateY(calc(-1 * (var(--pad-y) + 0.17em)));
   border-radius: 100px;
   background: var(--ink);
   color: #fff;
