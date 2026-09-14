@@ -287,19 +287,27 @@ a { color: inherit; text-decoration: none; }
   padding-inline: var(--gutter);
 }
 
-.header-brand { display: grid; gap: 1px; }
+/* 文字組みは techmujin.jp のヘッダーに合わせている
+   （書体・文字色・字間・行間とも同サイトの値をそのまま使う） */
+.header-brand { display: flex; flex-direction: column; gap: 2px; }
 .header-brand-ja {
-  font-size: 1.0625rem;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP",
+               "Yu Gothic", "遊ゴシック", Meiryo, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #990066;
 }
 .header-brand-en {
-  font-family: var(--f-en);
-  font-size: 0.625rem;
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP",
+               "Yu Gothic", "游ゴシック", Meiryo, sans-serif;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--muted);
+  line-height: 1.8;
+  letter-spacing: 0.18em;
+  color: #5a5a72;
 }
 
 .nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
@@ -395,10 +403,10 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   gap: clamp(32px, 5vw, 64px);
 }
-.hero-copy { display: flex; flex-direction: column; }
+/* 左カラムは中央揃え */
+.hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
 .hero-eyebrow {
-  align-self: flex-start;
   margin-bottom: 20px;
   padding: 7px 16px;
   border-radius: 100px;
@@ -410,12 +418,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
 }
 
-.hero-logo { margin-bottom: clamp(16px, 2.2vw, 22px); }
-.hero-logo img {
-  width: clamp(150px, 20vw, 205px);
-  /* ロゴSVGは白抜き。明るい地に合わせて墨色に反転させる */
-  filter: brightness(0) saturate(100%) invert(11%) sepia(19%) saturate(1400%) hue-rotate(215deg) brightness(95%) contrast(95%);
-}
+.hero-logo { margin-bottom: clamp(18px, 2.4vw, 24px); }
+/* 横長のロックアップ（約2.6:1）。コピー欄の幅いっぱい近くまで使って主役にする */
+.hero-logo img { width: clamp(250px, 31vw, 420px); }
 
 .hero-date {
   display: flex;
@@ -440,8 +445,8 @@ a { color: inherit; text-decoration: none; }
   background-clip: text;
   color: transparent;
 }
+/* 「11.22」とベースラインを揃える（flex の baseline 揃えに任せる） */
 .hero-date-dow {
-  align-self: center;
   padding: 5px 12px;
   border-radius: 100px;
   background: var(--ink);
@@ -1313,7 +1318,7 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(32px, 5vw, 56px);
   padding-block: clamp(48px, 7vw, 76px);
 }
-.footer-logo { width: 140px; margin-bottom: 20px; }
+.footer-logo { width: clamp(180px, 18vw, 220px); margin-bottom: 20px; }
 .footer-tagline { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.85); margin-bottom: 6px; }
 .footer-date {
   font-family: var(--f-en);
@@ -1407,20 +1412,14 @@ a { color: inherit; text-decoration: none; }
   .nav-link::after { display: none; }
   .nav-cta { margin-top: 26px; padding: 15px 30px; font-size: var(--fs-body); }
 
-  /* 1カラムになると左寄せのテキストが左に偏って見えるため、
-     写真の上に来るコピー部分は中央揃えにする。
-     また、申込ボタンが写真より下に埋もれないよう
+  /* 申込ボタンが写真より下に埋もれないよう、
      コピー → 開催情報の帯 → 写真 の順に並べ替える */
   .hero-inner { display: flex; flex-direction: column; }
   .hero-main { display: contents; }
-  .hero-copy { order: 1; text-align: center; }
+  .hero-copy { order: 1; }
   .hero-bar { order: 2; margin-top: clamp(26px, 5vw, 34px); flex-direction: column; text-align: center; }
   .hero-visual { order: 3; margin-top: clamp(26px, 5vw, 34px); }
-  .hero-eyebrow { align-self: center; margin-inline: auto; }
-  .hero-logo { display: flex; justify-content: center; }
-  .hero-date { justify-content: center; }
-  .hero-lead { margin-inline: auto; }
-  .hero-sns { margin-top: 0; border-top: 0; padding-top: 0; text-align: center; }
+  .hero-sns { margin-top: 0; border-top: 0; padding-top: 0; }
   /* 折り返しで半端な並びになるのを避け、会場を1行使って2段に組む */
   .hero-facts {
     display: grid;
