@@ -1228,10 +1228,12 @@ a { color: inherit; text-decoration: none; }
   color: var(--muted);
 }
 
-.tier-logos { display: grid; gap: clamp(10px, 1.6vw, 16px); }
-.tier-logos-lg { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
-.tier-logos-md { grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); }
-.tier-logos-sm { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+/* 列の上限幅を決めて中央寄せにする。枠数が少ない（1〜2枠の）区分でも
+   1枠が横に間延びして見えないようにする */
+.tier-logos { display: grid; justify-content: center; gap: clamp(10px, 1.6vw, 16px); }
+.tier-logos-lg { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 420px)); }
+.tier-logos-md { grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 300px)); }
+.tier-logos-sm { grid-template-columns: repeat(auto-fit, minmax(130px, 200px)); }
 .logo-slot {
   display: grid;
   place-items: center;
@@ -1246,6 +1248,15 @@ a { color: inherit; text-decoration: none; }
 }
 .tier-logos-lg .logo-slot { aspect-ratio: 16 / 6; }
 .tier-logos-sm .logo-slot { aspect-ratio: 16 / 9; }
+
+/* 募集中の枠。空き枠と同じ破線だが、日本語の文言を通常の字間で読ませる */
+.logo-slot-open {
+  font-family: var(--f-jp);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
 
 /* ロゴが入った枠。空き枠の破線に対して実線にし、リンクとして振る舞う */
 .logo-slot-filled {
