@@ -516,13 +516,22 @@ a { color: inherit; text-decoration: none; }
   color: var(--muted);
 }
 
-/* 左カラムの下端に寄せて右の写真と底辺を合わせる。
+/* フォローとシェアのまとまり。
+   左カラムの下端に寄せて右の写真と底辺を合わせる。
    離れた位置に置くので、細い罫で区切って意図的な配置に見せる */
-.hero-sns {
+.hero-social {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   margin-top: auto;
   padding-top: clamp(16px, 2.4vw, 24px);
   border-top: 1px solid var(--line-soft);
+}
+.hero-sns {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px 18px;
@@ -552,13 +561,94 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-sns a:hover { color: var(--violet); }
 .hero-sns a:hover span { border-color: var(--violet); }
+.hero-sns-label {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+/* シェア。押すと共有先の一覧を開く（スマホではOSの共有メニューを使う） */
+.share { position: relative; }
+.share-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  list-style: none;
+  cursor: pointer;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.share-toggle::-webkit-details-marker { display: none; }
+.share-toggle:hover,
+.share[open] .share-toggle { color: var(--violet); border-color: rgba(107, 63, 181, 0.45); }
+.share-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+.share-icon-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.share-menu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  padding: 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+}
+.share-menu a,
+.share-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  cursor: pointer;
+}
+.share-menu a:hover,
+.share-menu button:hover { background: var(--bg-tint); }
+/* 一覧では、見分けやすいよう各サービスの色でアイコンを表示する */
+.share-x .share-icon { color: #000; }
+.share-facebook .share-icon { color: #0866ff; }
+.share-line .share-icon { color: #06c755; }
+.share-hatena .share-icon { color: #00a4de; }
+.share-menu button .share-icon { color: var(--violet); }
+
 
 /* 会場写真の上に、当日の様子のイラストを重ねて配置する。
    写真だけでは伝わらない「当日どんな場になるか」を補う */
-.hero-visual { position: relative; }
+/* 写真は左カラムの高さに合わせて伸ばし、底辺をそろえる */
+.hero-visual { position: relative; display: flex; flex-direction: column; }
 
 .hero-photo {
   position: relative;
+  flex: 1;
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
@@ -575,6 +665,8 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-photo img {
   width: 100%;
+  height: 100%;
+  min-height: 0;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
@@ -1400,6 +1492,15 @@ a { color: inherit; text-decoration: none; }
   transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
 }
 .footer-nav a:hover, .footer-links a:hover { color: #fff; padding-left: 5px; }
+/* フォロー欄はサービスのアイコンを添える */
+.footer-links a { display: inline-flex; align-items: center; gap: 8px; }
+.sns-icon-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); }
 .footer-bottom .wrap {
@@ -1476,7 +1577,7 @@ a { color: inherit; text-decoration: none; }
   .hero-copy { order: 1; }
   .hero-bar { order: 2; margin-top: clamp(26px, 5vw, 34px); flex-direction: column; text-align: center; }
   .hero-visual { order: 3; margin-top: clamp(26px, 5vw, 34px); }
-  .hero-sns { margin-top: 0; border-top: 0; padding-top: 0; }
+  .hero-social { margin-top: 0; border-top: 0; padding-top: 0; }
   /* 折り返しで半端な並びになるのを避け、会場を1行使って2段に組む */
   .hero-facts {
     display: grid;
@@ -1497,6 +1598,9 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 680px) {
   .hero-bar { align-items: stretch; }
   .hero-bar .btn { width: 100%; justify-content: center; }
+  /* 4つのリンクを1行に収めるため、見出しは上に置く */
+  .hero-sns { gap: 4px 14px; }
+  .hero-sns-label { flex-basis: 100%; text-align: center; }
   .hero-sns { text-align: center; }
 
   .outline-row { grid-template-columns: 1fr; gap: 2px; }

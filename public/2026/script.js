@@ -6,6 +6,7 @@
  * 3. 現在地のナビ表示
  * 4. スクロール演出
  * 5. お問い合わせフォーム
+ * 6. シェア
  */
 
 'use strict';
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initReveal();
   initContactForm();
+  initShare();
 });
 
 
@@ -226,4 +228,70 @@ function resetTurnstileWidget() {
   if (window.turnstile) {
     window.turnstile.reset();
   }
+}
+
+
+/* =============================================
+   6. シェア
+   <details> で共有先の一覧を開閉する（JSが無くても開閉はできる）。
+   スマホではOSの共有メニューを使い、端末に入っているアプリへ直接送れるようにする
+============================================= */
+function initShare() {
+  const share = document.querySelector('.share');
+  if (!share) return;
+
+  const toggle = share.querySelector('.share-toggle');
+  const copyButton = share.querySelector('[data-share-copy]');
+  const shareData = {
+    title: share.dataset.title,
+    text: share.dataset.text,
+    url: share.dataset.url
+  };
+  const canUseNativeShare = typeof navigator.share === 'function'
+    && window.matchMedia('(pointer: coarse)').matches;
+
+  toggle.addEventListener('click', async (e) => {
+    if (!canUseNativeShare) return;
+    e.preventDefault();
+    try {
+      await navigator.share(shareData);
+    } catch {
+      // 共有メニューを閉じただけの場合も例外になるので、何もしない
+    }
+  });
+
+  const close = () => { share.open = false; };
+
+  // 一覧の外側を押したら閉じる
+  document.addEventListener('click', (e) => {
+    if (share.open && !share.contains(e.target)) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && share.open) {
+      close();
+      toggle.focus();
+    }
+  });
+
+  // 共有先を選んだら閉じる
+  share.addEventListener('click', (e) => {
+    if (e.target.closest('.share-menu a')) close();
+  });
+
+  if (!copyButton) return;
+  const label = copyButton.querySelector('span');
+  const defaultLabel = label.textContent;
+  let timer;
+
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(shareData.url);
+      label.textContent = 'コピーしました';
+    } catch {
+      label.textContent = 'コピーできませんでした';
+    }
+    clearTimeout(timer);
+    timer = setTimeout(() => { label.textContent = defaultLabel; }, 2000);
+  });
 }
