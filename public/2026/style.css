@@ -406,16 +406,24 @@ a { color: inherit; text-decoration: none; }
 /* 左カラムは中央揃え */
 .hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
+/* 枠で囲むとボタンに見えるため、OGP画像と同じく両脇に線を引く見出しにする */
 .hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 0;
-  padding: 7px 16px;
-  border-radius: 100px;
-  background: #fff;
-  border: 1px solid var(--line);
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--ink-soft);
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
 }
 
 /* ロゴは単体で見せたいので、上下にゆったり余白を取る */
