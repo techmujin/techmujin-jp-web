@@ -714,6 +714,103 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
+/* 「無尽」の語の説明。辞書の項目として組む。
+   字の大小・太さ・濃さで、もとの語義（小さく淡く）と
+   本イベントの定義（大きく濃く）の主従をはっきり付ける */
+.mujin {
+  position: relative;
+  overflow: hidden;
+  max-width: var(--wrap-text);
+  margin: clamp(40px, 5.5vw, 64px) auto;
+  padding: clamp(28px, 3.4vw, 40px) clamp(24px, 3vw, 40px);
+  padding-left: clamp(28px, 3.6vw, 46px);
+  background: var(--bg-tint);
+  border-radius: var(--radius);
+}
+.mujin::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--grad);
+}
+
+/* 見出し語。読みと分類を添えて、用語解説であることを一目で示す */
+.mujin-term {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-bottom: 16px;
+}
+/* 漢字2文字を字間を空けて大きく置く。
+   字間の分だけ右に余白が残るので、その一字分を打ち消す */
+.mujin-word {
+  font-size: clamp(1.75rem, 4.2vw, 2.5rem);
+  letter-spacing: 0.2em;
+  margin-right: -0.2em;
+  line-height: 1.3;
+}
+.mujin-yomi {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.mujin-yomi::before { content: "【"; }
+.mujin-yomi::after  { content: "】"; }
+.mujin-class {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--violet);
+}
+.mujin-class::before { content: "〔"; }
+.mujin-class::after  { content: "〕"; }
+
+/* もとの語義。前提なので小さく淡く置き、読み飛ばせるようにする */
+.mujin-sense {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+  line-height: 2;
+  word-break: auto-phrase;
+}
+
+/* 派生した語義。罫と「転じて」で語義が切り替わることを示す */
+.mujin-derived {
+  margin-top: clamp(20px, 2.6vw, 26px);
+  padding-top: clamp(18px, 2.4vw, 24px);
+  border-top: 1px solid var(--line);
+}
+/* 子見出し。親見出しより一回り小さくし、色はヘッダーのブランド名と
+   同じ #990066 に合わせて、イベント名であることを一目で伝える */
+.mujin-term-sub {
+  margin-bottom: 14px;
+}
+.mujin-term-sub .mujin-word {
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  letter-spacing: 0.12em;
+  margin-right: -0.12em;
+  color: #990066;
+}
+
+.mujin-turn {
+  margin-bottom: 8px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--violet);
+}
+/* 由来とイベントが結びつく一文。ここだけ大きく太らせて墨を濃くする */
+.mujin-point {
+  margin-bottom: 12px;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1.9;
+  color: var(--ink);
+  word-break: auto-phrase;
+}
+
 .concepts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
