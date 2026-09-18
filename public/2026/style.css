@@ -782,16 +782,20 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
-/* 派生した語義。罫と「転じて」で語義が切り替わることを示す */
-.mujin-derived {
-  margin-top: clamp(20px, 2.6vw, 26px);
-  padding-top: clamp(18px, 2.4vw, 24px);
-  border-top: 1px solid var(--line);
+/* 2つの項目の仕切り */
+.mujin-rule {
+  height: 1px;
+  border: 0;
+  /* hr の既定の margin-inline: auto はグリッド項目だと幅を潰すので打ち消す */
+  margin-inline: 0;
+  margin-block: clamp(20px, 2.6vw, 26px);
+  background: var(--line);
 }
+.mujin-subhead { margin-bottom: 14px; }
 /* 子見出し。親見出しより一回り小さくし、色はヘッダーのブランド名と
    同じ #990066 に合わせて、イベント名であることを一目で伝える */
 .mujin-term-sub {
-  margin-bottom: 14px;
+  margin-bottom: 0;
 }
 /* 子見出しはゴシックのまま。古い語（明朝）と現代の語（ゴシック）を
    書体で対比させ、「転じて」の関係を字面でも示す。
@@ -821,6 +825,35 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.9;
   color: var(--ink);
   word-break: auto-phrase;
+}
+
+/* 広い画面では見出し語を左の列にまとめ、「無尽」と「テック無尽」の
+   2項目が上下に並ぶ辞書の組みにする。
+   本文の行長が伸びるぶん背が縮み、直後のコンセプトカードと高さが釣り合う。
+   幅も .wrap いっぱいに広げて、カード列と左右の端を揃える */
+@media (min-width: 880px) {
+  .mujin {
+    max-width: none;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    column-gap: clamp(28px, 3.5vw, 56px);
+    align-items: start;
+    padding: clamp(32px, 3.6vw, 44px);
+    padding-left: clamp(34px, 3.8vw, 50px);
+  }
+  /* 見出し語は縦に積む */
+  .mujin-term,
+  .mujin-subhead .mujin-term-sub {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-bottom: 0;
+  }
+  .mujin-term           { grid-area: 1 / 1; }
+  .mujin > .mujin-sense { grid-area: 1 / 2; }
+  .mujin-rule           { grid-area: 2 / 1 / 3 / -1; }
+  .mujin-subhead        { grid-area: 3 / 1; margin-bottom: 0; }
+  .mujin-derived        { grid-area: 3 / 2; }
 }
 
 .concepts {
