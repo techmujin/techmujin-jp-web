@@ -714,8 +714,7 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
-/* 「無尽」の語の説明。辞書の見出し語のように語そのものを見せ、
-   由来の核心（お金 → 技術）だけを図にする。
+/* 「無尽」の語の説明。辞書の項目として組む。
    塗りは敷かず前後をヘアラインで挟み、本編を一度止める余談として扱う。
    直後のコンセプトカードより重くならないようにするため */
 .mujin {
@@ -723,16 +722,17 @@ a { color: inherit; text-decoration: none; }
   margin: clamp(40px, 5.5vw, 64px) auto;
   padding-block: clamp(30px, 4vw, 44px);
   border-block: 1px solid var(--line);
-  text-align: center;
 }
-/* 見出し語。読みと分類を添えて、用語解説であることを一目で示す */
+/* 見出し語。読みと分類を添えて、用語解説であることを一目で示す。
+   節全体が中央揃えなので、ここが中央の錨になる */
 .mujin-term {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
   gap: 4px 12px;
-  margin-bottom: clamp(20px, 2.6vw, 28px);
+  margin-bottom: clamp(22px, 2.8vw, 30px);
+  text-align: center;
 }
 /* 漢字2文字を字間を空けて大きく置く。
    字間の分だけ右に余白が残るので、その一字分を打ち消す */
@@ -759,54 +759,40 @@ a { color: inherit; text-decoration: none; }
 .mujin-class::before { content: "〔"; }
 .mujin-class::after  { content: "〕"; }
 
-.mujin p {
-  max-width: 30em;
+/* 語釈。①山梨の文化 → ②本イベント と読ませる。
+   ぶら下げの番号組みなので、ここだけ左揃えにする */
+.mujin-senses {
+  display: grid;
+  gap: 16px;
+  max-width: 34em;
   margin-inline: auto;
+  counter-reset: sense;
+  text-align: left;
+}
+.mujin-senses li {
+  position: relative;
+  padding-left: 34px;
+  counter-increment: sense;
   color: var(--ink-soft);
   line-height: 2;
   word-break: auto-phrase;
 }
-
-/* 置き換えの図。矢印はブランドのグラデーションで、
-   マゼンタ（無尽）から青（技術）へ渡る */
-.mujin-swap {
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  margin-block: clamp(26px, 3.4vw, 36px);
-}
-.mujin-swap-label {
-  font-size: var(--fs-label);
-  letter-spacing: 0.14em;
-  color: var(--muted);
-}
-.mujin-swap-row {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 2.8vw, 30px);
-}
-.mujin-swap-item {
-  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.mujin-swap-arrow {
-  position: relative;
-  width: clamp(52px, 9vw, 90px);
-  height: 2px;
-  border-radius: 2px;
-  background: var(--grad);
-}
-/* 先端の三角は、軸の右端の色に合わせる */
-.mujin-swap-arrow::after {
-  content: "";
+.mujin-senses li::before {
+  content: counter(sense);
   position: absolute;
-  top: 50%;
-  right: -4px;
-  translate: 0 -50%;
-  border: 5px solid transparent;
-  border-right: 0;
-  border-left: 8px solid var(--blue);
+  top: 5px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-family: var(--f-en);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 1;
 }
 
 .concepts {
