@@ -714,51 +714,99 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
-/* 「無尽」の語の説明。本文が続くので左揃え、地はうっすら紫。
-   左の縦グラデーションで「読みもの」であることを示す */
+/* 「無尽」の語の説明。辞書の見出し語のように語そのものを見せ、
+   由来の核心（お金 → 技術）だけを図にする。
+   塗りは敷かず前後をヘアラインで挟み、本編を一度止める余談として扱う。
+   直後のコンセプトカードより重くならないようにするため */
 .mujin {
-  position: relative;
-  overflow: hidden;
   max-width: var(--wrap-text);
-  margin: 0 auto clamp(36px, 5vw, 56px);
-  padding: clamp(26px, 3.2vw, 38px) clamp(22px, 3vw, 40px);
-  padding-left: clamp(26px, 3.4vw, 44px);
-  background: var(--bg-tint);
-  border-radius: var(--radius);
+  margin: clamp(40px, 5.5vw, 64px) auto;
+  padding-block: clamp(30px, 4vw, 44px);
+  border-block: 1px solid var(--line);
+  text-align: center;
 }
-.mujin::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: var(--grad);
+/* 見出し語。読みと分類を添えて、用語解説であることを一目で示す */
+.mujin-term {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 12px;
+  margin-bottom: clamp(20px, 2.6vw, 28px);
 }
-.mujin-title {
-  margin-bottom: 14px;
-  font-size: var(--fs-h3);
-  letter-spacing: 0.06em;
+/* 漢字2文字を字間を空けて大きく置く。
+   字間の分だけ右に余白が残るので、その一字分を打ち消す */
+.mujin-word {
+  font-size: clamp(1.75rem, 4.2vw, 2.5rem);
+  letter-spacing: 0.2em;
+  margin-right: -0.2em;
+  line-height: 1.3;
 }
-/* 読みは小さく添えるだけ。見出しの字面を崩さない */
 .mujin-yomi {
-  margin-left: 6px;
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
-.mujin-yomi::before { content: "（"; }
-.mujin-yomi::after  { content: "）"; }
+.mujin-yomi::before { content: "【"; }
+.mujin-yomi::after  { content: "】"; }
+.mujin-class {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--violet);
+}
+.mujin-class::before { content: "〔"; }
+.mujin-class::after  { content: "〕"; }
+
 .mujin p {
+  max-width: 30em;
+  margin-inline: auto;
   color: var(--ink-soft);
   line-height: 2;
   word-break: auto-phrase;
 }
-.mujin p + p { margin-top: 14px; }
-/* 由来とイベントが結びつく一文。ここだけ墨を濃くして太らせる */
-.mujin-point {
-  font-size: var(--fs-lead);
+
+/* 置き換えの図。矢印はブランドのグラデーションで、
+   マゼンタ（無尽）から青（技術）へ渡る */
+.mujin-swap {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-block: clamp(26px, 3.4vw, 36px);
+}
+.mujin-swap-label {
+  font-size: var(--fs-label);
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.mujin-swap-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.8vw, 30px);
+}
+.mujin-swap-item {
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
   font-weight: 700;
-  color: var(--ink);
+  letter-spacing: 0.08em;
+}
+.mujin-swap-arrow {
+  position: relative;
+  width: clamp(52px, 9vw, 90px);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad);
+}
+/* 先端の三角は、軸の右端の色に合わせる */
+.mujin-swap-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  translate: 0 -50%;
+  border: 5px solid transparent;
+  border-right: 0;
+  border-left: 8px solid var(--blue);
 }
 
 .concepts {
