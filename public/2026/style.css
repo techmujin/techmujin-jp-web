@@ -720,23 +720,36 @@ a { color: inherit; text-decoration: none; }
 
 /* 「無尽」の語の説明。辞書の項目として組む。
    字の大小・太さ・濃さで、もとの語義（小さく淡く）と
-   本イベントの定義（大きく濃く）の主従をはっきり付ける */
+   本イベントの定義（大きく濃く）の主従をはっきり付ける。
+
+   角丸タイルにすると直後のコンセプトカードと同じ「項目」に見え、
+   量感の差が不釣り合いに映るため、画面幅いっぱいの帯にして
+   「階層」の側に置く。名前の由来はこのイベントの核の説明なので、
+   幅を詰めるのではなく格を上げる方向で解く。
+   body に overflow-x: hidden があるので 100vw は横スクロールを生まない */
 .mujin {
   position: relative;
-  overflow: hidden;
-  max-width: var(--wrap-text);
-  margin: clamp(40px, 5.5vw, 64px) auto;
-  padding: clamp(28px, 3.4vw, 40px) clamp(24px, 3vw, 40px);
-  padding-left: clamp(28px, 3.6vw, 46px);
+  width: 100vw;
+  margin-block: clamp(48px, 6vw, 72px);
+  margin-inline: calc(50% - 50vw);
+  padding-block: clamp(44px, 5vw, 64px);
   background: var(--bg-tint);
-  border-radius: var(--radius);
 }
+/* 帯の入り口を示す罫。タイルだった頃の左の縦罫に代わるもの */
 .mujin::before {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
+  inset: 0 0 auto 0;
+  height: 3px;
   background: var(--grad);
+}
+/* 帯は全幅でも、中身は節の本文と同じ位置・同じ幅に揃える。
+   box-sizing: border-box なので、ガターぶんを max-width に足しておかないと
+   文字の幅が他より狭くなる */
+.mujin > * {
+  max-width: calc(var(--wrap-text) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 /* 見出し語。読みと分類を添えて、用語解説であることを一目で示す */
@@ -782,11 +795,22 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
-/* 派生した語義。罫と「転じて」で語義が切り替わることを示す */
+/* 派生した語義。罫と「転じて」で語義が切り替わることを示す。
+   罫は border ではなく擬似要素で引く。帯のガターぶんの padding が
+   border に乗って、本文より外側まで伸びてしまうため */
 .mujin-derived {
+  position: relative;
   margin-top: clamp(20px, 2.6vw, 26px);
   padding-top: clamp(18px, 2.4vw, 24px);
-  border-top: 1px solid var(--line);
+}
+.mujin-derived::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: var(--line);
 }
 /* 子見出し。親見出しより一回り小さくし、色はヘッダーのブランド名と
    同じ #990066 に合わせて、イベント名であることを一目で伝える */
