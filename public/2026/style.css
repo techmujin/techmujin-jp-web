@@ -794,13 +794,15 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 14px;
 }
 /* 子見出しはゴシックのまま。古い語（明朝）と現代の語（ゴシック）を
-   書体で対比させ、「転じて」の関係を字面でも示す */
+   書体で対比させ、「転じて」の関係を字面でも示す。
+   太らせると鈍く見えるので、ウェイトを落として字間で見出しの格を出す
+   （「本文側は性格を抑える」というこのサイトの方針にも合わせる） */
 .mujin-term-sub .mujin-word {
   font-family: var(--f-jp);
-  font-weight: 900;
-  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
-  letter-spacing: 0.12em;
-  margin-right: -0.12em;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.7vw, 1.7rem);
+  letter-spacing: 0.24em;
+  margin-right: -0.24em;
   color: #990066;
 }
 
