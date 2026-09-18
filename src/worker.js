@@ -5,6 +5,13 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // トップページは年次イベントページ（現在は /2026）へ誘導する。
+    // 毎年パスが変わる想定なので、ブラウザに恒久キャッシュされる
+    // 301 ではなく 302（一時的リダイレクト）にしておく
+    if (url.pathname === '/') {
+      return Response.redirect(new URL('/2026/', url), 302);
+    }
+
     if (url.pathname === '/api/contact') {
       return handleContactRequest(request, env);
     }
