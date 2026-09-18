@@ -714,6 +714,53 @@ a { color: inherit; text-decoration: none; }
   word-break: auto-phrase;
 }
 
+/* 「無尽」の語の説明。本文が続くので左揃え、地はうっすら紫。
+   左の縦グラデーションで「読みもの」であることを示す */
+.mujin {
+  position: relative;
+  overflow: hidden;
+  max-width: var(--wrap-text);
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  padding: clamp(26px, 3.2vw, 38px) clamp(22px, 3vw, 40px);
+  padding-left: clamp(26px, 3.4vw, 44px);
+  background: var(--bg-tint);
+  border-radius: var(--radius);
+}
+.mujin::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--grad);
+}
+.mujin-title {
+  margin-bottom: 14px;
+  font-size: var(--fs-h3);
+  letter-spacing: 0.06em;
+}
+/* 読みは小さく添えるだけ。見出しの字面を崩さない */
+.mujin-yomi {
+  margin-left: 6px;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.mujin-yomi::before { content: "（"; }
+.mujin-yomi::after  { content: "）"; }
+.mujin p {
+  color: var(--ink-soft);
+  line-height: 2;
+  word-break: auto-phrase;
+}
+.mujin p + p { margin-top: 14px; }
+/* 由来とイベントが結びつく一文。ここだけ墨を濃くして太らせる */
+.mujin-point {
+  font-size: var(--fs-lead);
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .concepts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
