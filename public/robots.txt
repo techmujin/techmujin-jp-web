@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techmujin.jp/sitemap.xml
