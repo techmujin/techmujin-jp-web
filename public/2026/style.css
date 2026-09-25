@@ -1373,7 +1373,7 @@ a { color: inherit; text-decoration: none; }
 .tier-logos { display: grid; justify-content: center; gap: clamp(10px, 1.6vw, 16px); }
 .tier-logos-lg { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 420px)); }
 .tier-logos-md { grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 300px)); }
-.tier-logos-sm { grid-template-columns: repeat(auto-fit, minmax(130px, 200px)); }
+.tier-logos-sm { grid-template-columns: repeat(auto-fit, minmax(130px, 192px)); }
 .logo-slot {
   display: grid;
   place-items: center;
