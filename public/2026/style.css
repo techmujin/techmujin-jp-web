@@ -1079,10 +1079,23 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
+/* 主コンテンツの箱から、詳細ページの該当ブロックへ */
+.tl-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--violet);
+}
+.tl-link::after { content: " →"; }
+.tl-link:hover { text-decoration: underline; }
+
 .tl-more {
-  margin-top: clamp(24px, 3.5vw, 32px);
+  margin-top: 8px;
+  font-size: var(--fs-sm);
   text-align: center;
 }
+.tl-more a { color: var(--violet); text-decoration: underline; }
 
 
 /* =============================================

@@ -27,6 +27,7 @@ async function loadTimetable(root) {
     if (timetable.schemaVersion !== 1) throw new Error(`Unsupported schemaVersion: ${timetable.schemaVersion}`);
 
     root.replaceChildren(renderTimetable(timetable.sessions));
+    scrollToHash();
   } catch (error) {
     console.error(error);
     status.textContent = '';
@@ -58,7 +59,8 @@ function renderTimetable(sessions) {
     if (!currentGroup || currentGroup.name !== session.group) {
       currentGroup = { name: session.group, items: el('ol', { class: 'tt-group-items' }), first: session };
       currentGroup.time = el('p', { class: 'tt-group-time' });
-      list.append(el('li', { class: 'tt-group' },
+      // トップページから group 名でリンクするので、見出しをそのまま id にする
+      list.append(el('li', { class: 'tt-group', id: session.group },
         el('div', { class: 'tt-group-head' },
           el('h2', { class: 'tt-group-title' }, session.group),
           currentGroup.time
@@ -144,6 +146,19 @@ function renderTimeRange(startsAt, endsAt) {
 /* =============================================
    小物
 ============================================= */
+
+// 中身は読み込み後に描画するので、ブラウザ標準の # へのジャンプは空振りする。描画後にやり直す
+function scrollToHash() {
+  if (!location.hash) return;
+  let id;
+  try {
+    id = decodeURIComponent(location.hash.slice(1));
+  } catch {
+    return;
+  }
+  const target = document.getElementById(id);
+  if (target) target.scrollIntoView({ block: 'start' });
+}
 
 // API の時刻は常に +09:00 固定なので、閲覧者のタイムゾーンに関係なく文字列から時:分を取り出す
 function formatTime(iso) {
