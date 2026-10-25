@@ -60,7 +60,8 @@ function renderTimetable(sessions) {
       currentGroup = { name: session.group, items: el('ol', { class: 'tt-group-items' }), first: session };
       currentGroup.time = el('p', { class: 'tt-group-time' });
       // トップページから group 名でリンクするので、見出しをそのまま id にする
-      list.append(el('li', { class: 'tt-group', id: session.group },
+      // 色はブロック先頭のコマの type に合わせる（休憩から始まることは無い想定）
+      list.append(el('li', { class: 'tt-group', id: session.group, 'data-type': session.type || '' },
         el('div', { class: 'tt-group-head' },
           el('h2', { class: 'tt-group-title' }, session.group),
           currentGroup.time
@@ -95,9 +96,12 @@ function renderSession(session) {
     body.append(el('ul', { class: 'tt-communities', 'aria-label': 'コミュニティ' },
       ...session.communities.map((community) => {
         const url = safeUrl(community.url);
+        const iconUrl = safeUrl(community.iconUrl);
+        const label = [community.name];
+        if (iconUrl) label.unshift(el('img', { src: iconUrl, alt: '', width: '20', height: '20', loading: 'lazy', decoding: 'async' }));
         return el('li', {}, url
-          ? el('a', { href: url, target: '_blank', rel: 'noopener noreferrer' }, community.name)
-          : community.name);
+          ? el('a', { href: url, target: '_blank', rel: 'noopener noreferrer' }, ...label)
+          : el('span', {}, ...label));
       })
     ));
   }
@@ -115,7 +119,7 @@ function renderSession(session) {
     ));
   }
 
-  const item = el('li', { class: 'tt-item', 'data-kind': session.kind },
+  const item = el('li', { class: 'tt-item', 'data-kind': session.kind, 'data-type': session.type || '' },
     el('p', { class: 'tt-time' }, ...renderTimeRange(session.startsAt, session.endsAt)),
     body
   );
@@ -126,11 +130,18 @@ function renderSession(session) {
 function renderSpeaker(speaker) {
   const item = el('li', { class: 'tt-speaker' });
   const iconUrl = safeUrl(speaker.iconUrl);
+  // アイコンが無い・読めないときは、名前の1文字目を丸に入れて代わりにする
+  const fallback = () => el('span', { class: 'tt-avatar', 'aria-hidden': 'true' }, Array.from(speaker.name)[0]);
+
   if (iconUrl) {
     // 名前を隣に書くので、画像は装飾として扱う
-    item.append(el('img', { src: iconUrl, alt: '', width: '28', height: '28', loading: 'lazy', decoding: 'async' }));
+    const img = el('img', { class: 'tt-avatar', src: iconUrl, alt: '', width: '56', height: '56', loading: 'lazy', decoding: 'async' });
+    img.addEventListener('error', () => img.replaceWith(fallback()), { once: true });
+    item.append(img);
+  } else {
+    item.append(fallback());
   }
-  item.append(el('span', {}, speaker.name));
+  item.append(el('span', { class: 'tt-speaker-name' }, speaker.name));
   return item;
 }
 

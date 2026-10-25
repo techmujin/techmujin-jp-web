@@ -1139,31 +1139,42 @@ a { color: inherit; text-decoration: none; }
 .tt-status[data-status="error"] { color: var(--ink-soft); }
 .tt-status a { color: var(--violet); text-decoration: underline; }
 
-.tt-list,
-.tt-group-items { display: grid; gap: 8px; }
+/* セッションの種類ごとの色。トークは青、LTは紫、スポンサーはマゼンタ、
+   オープニング・クロージングは墨。コマの左帯・時刻・まとまりの地色に使う */
+.tt-item,
+.tt-group { --c: var(--line); }
+[data-type="talk"]    { --c: var(--t3); }
+[data-type="lt"]      { --c: var(--t2); }
+[data-type="sponsor"] { --c: var(--t1); }
+[data-type="opening"],
+[data-type="closing"] { --c: var(--ink); }
 
-/* 1コマ。時刻の列と本文の列に分ける */
+.tt-list,
+.tt-group-items { display: grid; gap: 10px; }
+
+/* 1コマ。時刻の列と本文の列に分け、左端に種類の色の帯を引く */
 .tt-item {
   display: grid;
-  grid-template-columns: 104px 1fr;
+  grid-template-columns: 112px 1fr;
   gap: 0 20px;
-  padding: 14px 18px;
+  padding: 18px 20px 18px 22px;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
+  box-shadow: inset 5px 0 0 var(--c), var(--shadow);
 }
 .tt-time {
   font-family: var(--f-en);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  line-height: 1.6;
-  color: var(--ink);
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--c) 80%, var(--ink));
   white-space: nowrap;
 }
 .tt-time-sep { margin-inline: 3px; color: var(--muted); font-weight: 500; }
 
 .tt-title {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   line-height: 1.6;
   letter-spacing: 0.03em;
@@ -1172,17 +1183,26 @@ a { color: inherit; text-decoration: none; }
 /* 休憩・回遊タイムは枠を消して控えめに */
 .tt-item[data-kind="break"],
 .tt-item[data-kind="free"] {
-  padding-block: 8px;
+  padding-block: 6px;
   background: transparent;
   border-color: transparent;
+  box-shadow: none;
 }
 .tt-item[data-kind="break"] .tt-title,
-.tt-item[data-kind="free"] .tt-title { font-weight: 500; color: var(--ink-soft); }
+.tt-item[data-kind="free"] .tt-title { font-size: var(--fs-sm); font-weight: 500; color: var(--ink-soft); }
 .tt-item[data-kind="break"] .tt-time,
-.tt-item[data-kind="free"] .tt-time { color: var(--muted); font-weight: 500; }
+.tt-item[data-kind="free"] .tt-time { font-size: var(--fs-sm); color: var(--muted); font-weight: 500; }
+
+/* 回遊タイム・昼休憩は長いので、ブースの案内と同じ地色で区切りとして見せる */
+.tt-item[data-kind="free"] {
+  padding-block: 14px;
+  background: color-mix(in srgb, var(--t3) 8%, transparent);
+  border-radius: var(--radius-sm);
+}
+.tt-item[data-kind="free"] .tt-title { font-size: 1rem; font-weight: 700; color: var(--ink); }
 
 /* 中止 */
-.tt-item[data-cancelled] { background: var(--bg-tint); }
+.tt-item[data-cancelled] { --c: var(--muted); background: var(--bg-tint); }
 .tt-item[data-cancelled] .tt-title,
 .tt-item[data-cancelled] .tt-time { color: var(--muted); }
 .tt-item[data-cancelled] .tt-title { text-decoration: line-through; }
@@ -1199,45 +1219,74 @@ a { color: inherit; text-decoration: none; }
   vertical-align: 2px;
 }
 
+/* 登壇者。顔が見えることがいちばん大事なので、アイコンを大きく出す */
 .tt-speakers {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 16px;
-  margin-top: 8px;
+  gap: 10px 22px;
+  margin-top: 12px;
 }
 .tt-speaker {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: var(--fs-sm);
-  line-height: 1.5;
+  gap: 12px;
+  min-width: 0;
 }
-.tt-speaker img {
-  width: 28px;
-  height: 28px;
+.tt-avatar {
+  flex: none;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   object-fit: cover;
   background: var(--bg-tint);
+  box-shadow: 0 0 0 2px var(--card), 0 0 0 4px color-mix(in srgb, var(--c) 45%, transparent);
+}
+/* アイコンが無いときの代わり。名前の1文字目を入れる */
+span.tt-avatar {
+  display: grid;
+  place-items: center;
+  background: var(--grad);
+  color: #fff;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.tt-speaker-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .tt-communities {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 6px;
-  margin-top: 8px;
+  gap: 6px;
+  margin-top: 12px;
 }
-.tt-communities li {
-  padding: 1px 10px;
+.tt-communities a,
+.tt-communities span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px 3px 4px;
+  border: 1px solid var(--line);
   border-radius: 100px;
-  background: var(--bg-tint);
+  background: var(--card);
   font-size: var(--fs-xs);
-  line-height: 1.8;
+  font-weight: 500;
+  line-height: 1.6;
   color: var(--ink-soft);
 }
-.tt-communities a:hover { color: var(--violet); text-decoration: underline; }
+.tt-communities img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.tt-communities a:hover { border-color: var(--violet); color: var(--violet); }
 
 .tt-message {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: var(--fs-sm);
   line-height: 1.8;
   color: var(--magenta);
@@ -1247,17 +1296,18 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-wrap: wrap;
   gap: 4px 14px;
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: var(--fs-sm);
 }
 .tt-links a { color: var(--violet); text-decoration: underline; }
 
 /* 発表のまとまり（コミュニティ紹介・LT など）。見出しの下にコマを並べる */
 .tt-group {
-  margin-block: 16px;
-  padding: 16px;
+  margin-block: 20px;
+  padding: 18px;
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--t1) 6%, transparent);
+  background: color-mix(in srgb, var(--c) 9%, var(--bg));
+  border-top: 4px solid var(--c);
 }
 .tt-group-head {
   display: flex;
@@ -1265,14 +1315,18 @@ a { color: inherit; text-decoration: none; }
   align-items: baseline;
   justify-content: space-between;
   gap: 4px 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   padding-inline: 4px;
 }
-.tt-group-title { font-size: var(--fs-h3); letter-spacing: 0.06em; }
+.tt-group-title {
+  font-size: var(--fs-h2);
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--c) 70%, var(--ink));
+}
 .tt-group-time {
   font-family: var(--f-en);
-  font-size: var(--fs-sm);
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--ink-soft);
 }
 
@@ -1981,9 +2035,10 @@ a { color: inherit; text-decoration: none; }
   .tl-time { font-size: 1rem; }
 
   /* 詳細タイムテーブルは時刻を本文の上に載せる */
-  .tt-item { grid-template-columns: 1fr; padding: 12px 14px; }
-  .tt-time { font-size: var(--fs-sm); }
-  .tt-group { padding: 12px 10px; }
+  .tt-item { grid-template-columns: 1fr; padding: 14px 14px 14px 18px; }
+  .tt-time { font-size: 0.9375rem; }
+  .tt-group { padding: 14px 10px; }
+  .tt-avatar { width: 48px; height: 48px; }
 
   .com-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr; }
