@@ -1373,7 +1373,12 @@ a { color: inherit; text-decoration: none; }
 .tier-logos { display: grid; justify-content: center; gap: clamp(10px, 1.6vw, 16px); }
 .tier-logos-lg { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 420px)); }
 .tier-logos-md { grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 300px)); }
-.tier-logos-sm { grid-template-columns: repeat(auto-fit, minmax(130px, 192px)); }
+.tier-logos-sm {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 192px));
+  /* 6社を5+1に分けず3社×2段で並べるため、1段を3枠までに抑える */
+  max-width: calc(192px * 3 + clamp(10px, 1.6vw, 16px) * 2);
+  margin-inline: auto;
+}
 .logo-slot {
   display: grid;
   place-items: center;
